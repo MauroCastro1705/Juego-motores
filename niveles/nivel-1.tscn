@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba15ok7ilb0gj"]
+
+[ext_resource type="PackedScene" uid="uid://clmjuj1itk38j" path="res://enemigos/enemigo-1.tscn" id="1_iptt1"]
+[ext_resource type="PackedScene" uid="uid://cogoxtxt25e1a" path="res://jugador/jugador.tscn" id="2_tvrp2"]
+
+[node name="Nivel-1" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -7.0
+offset_top = -20.0
+offset_right = 517.0
+offset_bottom = 630.0
+color = Color(0.0779451, 0.00175918, 0.138748, 1)
+metadata/_edit_lock_ = true
+
+[node name="Enemigo-1" parent="." instance=ExtResource("1_iptt1")]
+position = Vector2(250, 28)
+
+[node name="Jugador" parent="." instance=ExtResource("2_tvrp2")]
+position = Vector2(250, 561)

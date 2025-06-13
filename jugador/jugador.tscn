@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cogoxtxt25e1a"]
+
+[ext_resource type="Texture2D" uid="uid://dtc7cfh62lbgi" path="res://Assets/Sprites/Ships/spaceShips_005.png" id="1_y3xgi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dapwa"]
+radius = 22.0907
+
+[node name="Jugador" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dapwa")
+
+[node name="SpaceShips005" type="Sprite2D" parent="."]
+scale = Vector2(0.13289, 0.13289)
+texture = ExtResource("1_y3xgi")
