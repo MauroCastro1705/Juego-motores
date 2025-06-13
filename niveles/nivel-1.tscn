@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba15ok7ilb0gj"]
+[gd_scene load_steps=4 format=3 uid="uid://ba15ok7ilb0gj"]
 
 [ext_resource type="PackedScene" uid="uid://clmjuj1itk38j" path="res://enemigos/enemigo-1.tscn" id="1_iptt1"]
 [ext_resource type="PackedScene" uid="uid://cogoxtxt25e1a" path="res://jugador/jugador.tscn" id="2_tvrp2"]
+[ext_resource type="PackedScene" uid="uid://beci6n7u7rygv" path="res://recursos/obstaculos/asteroide-1.tscn" id="3_tvrp2"]
 
 [node name="Nivel-1" type="Node2D"]
 
@@ -18,3 +19,6 @@ position = Vector2(250, 28)
 
 [node name="Jugador" parent="." instance=ExtResource("2_tvrp2")]
 position = Vector2(250, 561)
+
+[node name="Asteroide-1" parent="." instance=ExtResource("3_tvrp2")]
+position = Vector2(179, 324)

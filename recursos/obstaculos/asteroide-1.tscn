@@ -1,16 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://beci6n7u7rygv"]
+[gd_scene load_steps=4 format=3 uid="uid://beci6n7u7rygv"]
 
 [ext_resource type="Texture2D" uid="uid://b4td508qdn5n2" path="res://Assets/Sprites/Meteors/spaceMeteors_001.png" id="1_ar5an"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ar5an"]
+friction = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ddtys"]
 radius = 25.02
 
 [node name="Asteroide-1" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_ar5an")
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ddtys")
 
 [node name="SpaceMeteors001" type="Sprite2D" parent="."]
 position = Vector2(0, -1)
 scale = Vector2(0.115925, 0.115925)
 texture = ExtResource("1_ar5an")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ddtys")
