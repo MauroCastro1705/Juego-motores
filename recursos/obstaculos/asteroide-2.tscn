@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://i532g8ayx520"]
+
+[ext_resource type="Texture2D" uid="uid://c0u88wirghqh4" path="res://Assets/Sprites/Meteors/spaceMeteors_004.png" id="1_40oln"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ddtys"]
+radius = 28.0179
+
+[node name="Asteroide-2" type="RigidBody2D"]
+
+[node name="SpaceMeteors004" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(0.127069, 0.127069)
+texture = ExtResource("1_40oln")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ddtys")

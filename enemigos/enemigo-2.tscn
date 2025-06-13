@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://gb6v2t3p5g53"]
+
+[ext_resource type="Texture2D" uid="uid://cuwuvum5wn352" path="res://Assets/Sprites/Ships/spaceShips_006.png" id="1_2epum"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6glxd"]
+radius = 14.0
+height = 40.0
+
+[node name="Enemigo-2" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_6glxd")
+debug_color = Color(0.894717, 0.266944, 0.455778, 0.42)
+
+[node name="SpaceShips006" type="Sprite2D" parent="."]
+position = Vector2(-7.62939e-06, -9.53674e-07)
+scale = Vector2(0.237805, 0.237805)
+texture = ExtResource("1_2epum")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-14, 15)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(14, 15)
