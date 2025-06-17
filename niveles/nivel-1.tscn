@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba15ok7ilb0gj"]
+[gd_scene load_steps=7 format=3 uid="uid://ba15ok7ilb0gj"]
 
 [ext_resource type="PackedScene" uid="uid://clmjuj1itk38j" path="res://enemigos/enemigo-1.tscn" id="1_iptt1"]
+[ext_resource type="Script" uid="uid://ca6v2rhk2ralj" path="res://niveles/nivel_1.gd" id="1_srq4w"]
 [ext_resource type="PackedScene" uid="uid://cogoxtxt25e1a" path="res://jugador/jugador.tscn" id="2_tvrp2"]
 [ext_resource type="PackedScene" uid="uid://beci6n7u7rygv" path="res://recursos/obstaculos/asteroide-1.tscn" id="3_tvrp2"]
 
@@ -11,6 +12,7 @@ size = Vector2(61, 891)
 size = Vector2(577, 33)
 
 [node name="Nivel-1" type="Node2D"]
+script = ExtResource("1_srq4w")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -7.0

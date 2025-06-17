@@ -3,7 +3,8 @@ extends CharacterBody2D
 @export var move_speed: float = 100.0
 @export var move_range: float = 200.0   # Rango de movimiento de lado a lado
 @export var fire_rate: float = 1.5   # Tiempo entre disparos
-@export var bullet_scene: PackedScene   # Escena de bala exportada
+@export var bala_enemigo: PackedScene   # Escena de bala exportada
+@onready var vida_local = Global.vida_enemigo1
 
 var movement_direction := 1 # 1 = derecha, -1 = izquierda
 var start_position_x: float # Para controlar el rango de movimiento
@@ -27,10 +28,22 @@ func _calcular_distancia():
 		movement_direction *= -1
 
 func _shoot():
-	if bullet_scene:
-		var bullet = bullet_scene.instantiate()
-		bullet.global_position = global_position
-		get_tree().current_scene.add_child(bullet)
+	if bala_enemigo:
+		var bala = bala_enemigo.instantiate()
+		bala.global_position = global_position
+		get_tree().current_scene.add_child(bala)
 
 func _on_timer_disparo_timeout() -> void:
 	_shoot()
+
+
+func _on_area_damage_body_entered(body: Node2D) -> void:
+	if body.is_in_group("bala_player"):
+		vida_local -= 1
+		_check_muerte()
+		
+func _check_muerte():
+	if vida_local == 0:
+		queue_free()
+		Global._update_score(Global.puntaje_enemigo1)
+	

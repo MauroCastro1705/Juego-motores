@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cogoxtxt25e1a"]
+[gd_scene load_steps=5 format=3 uid="uid://cogoxtxt25e1a"]
 
 [ext_resource type="Script" uid="uid://cdototyscoliu" path="res://jugador/jugador.gd" id="1_5vouv"]
 [ext_resource type="Texture2D" uid="uid://dbfk4uqaslqrj" path="res://Assets/Sprites/player_ship.png" id="2_5vouv"]
@@ -6,7 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_dapwa"]
 radius = 22.0907
 
-[node name="Jugador" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5vouv"]
+radius = 79.0253
+
+[node name="Jugador" type="CharacterBody2D" groups=["jugador"]]
 rotation = -3.13306
 script = ExtResource("1_5vouv")
 
@@ -28,12 +31,10 @@ rotation = -3.14159
 scale = Vector2(0.0422336, 0.0422336)
 texture = ExtResource("2_5vouv")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -0.691137
-offset_top = -80.9971
-offset_right = 116.309
-offset_bottom = 35.0029
-rotation = 0.785398
-color = Color(0.290196, 1, 1, 0.254902)
+[node name="escudo" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="escudo"]
+shape = SubResource("CircleShape2D_5vouv")
+debug_color = Color(0.567238, 0.45675, 0.831844, 0.42)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

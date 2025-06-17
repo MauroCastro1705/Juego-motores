@@ -8,11 +8,10 @@ extends CharacterBody2D
 @onready var marker = $Marker2D #para instanciar balas
 @onready var marker2 = $Marker2D2
 @onready var timer_escudo = $Timer
-@onready var sprite_escudo = $ColorRect
 
 
 #bala
-@export var bala:PackedScene
+@export var bala_player:PackedScene
 
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -20,9 +19,8 @@ func _physics_process(delta):
 	input_vector.y = Input.get_action_strength("abajo") - Input.get_action_strength("arriba")
 	_handle_movement(input_vector, delta)
 	_handle_disparar()
-	move_and_slide()	
+	move_and_slide()
 	
-
 func _handle_movement(input_vector, delta):
 	if input_vector != Vector2.ZERO:
 		# move_toward = interpola
@@ -32,11 +30,14 @@ func _handle_movement(input_vector, delta):
 
 func _handle_disparar():
 	if Input.is_action_just_pressed("disparar"):
+		#posible logica de fire-rate
 		_disparar_balas()
 
 func _disparar_balas():
-	pass
-
+	if bala_player:
+		var bala = bala_player.instantiate()
+		bala.global_position = global_position
+		get_tree().current_scene.add_child(bala)
 
 func _on_timer_timeout() -> void:
-	sprite_escudo.visible = true
+	pass
