@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://clmjuj1itk38j"]
+[gd_scene load_steps=4 format=3 uid="uid://clmjuj1itk38j"]
 
+[ext_resource type="Script" uid="uid://cghrs2gfuwtw2" path="res://enemigos/enemigo_1.gd" id="1_6glxd"]
 [ext_resource type="Texture2D" uid="uid://crio14v1vt34a" path="res://Assets/Sprites/Ships/spaceShips_001.png" id="1_pb86c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6glxd"]
@@ -7,6 +8,7 @@ radius = 11.0
 height = 36.0
 
 [node name="Enemigo-1" type="CharacterBody2D"]
+script = ExtResource("1_6glxd")
 
 [node name="SpaceShips001" type="Sprite2D" parent="."]
 scale = Vector2(0.191489, 0.191489)
@@ -15,3 +17,7 @@ texture = ExtResource("1_pb86c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6glxd")
 debug_color = Color(0.894717, 0.266944, 0.455778, 0.42)
+
+[node name="Timer_disparo" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer_disparo" to="." method="_on_timer_disparo_timeout"]

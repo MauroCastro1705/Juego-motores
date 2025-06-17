@@ -3,9 +3,13 @@ extends CharacterBody2D
 @export var max_speed: float = 300.0     # Velocidad máxima
 @export var aceleracion: float = 900.0   # Qué tan rápido acelera
 @export var frenado: float = 800.0      # Qué tan rápido se frena
+@export var vida_player:int = 3
+
 @onready var marker = $Marker2D #para instanciar balas
 @onready var marker2 = $Marker2D2
 @onready var timer_escudo = $Timer
+@onready var sprite_escudo = $ColorRect
+
 
 #bala
 @export var bala:PackedScene
@@ -32,3 +36,7 @@ func _handle_disparar():
 
 func _disparar_balas():
 	pass
+
+
+func _on_timer_timeout() -> void:
+	sprite_escudo.visible = true
