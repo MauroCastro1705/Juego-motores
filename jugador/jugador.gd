@@ -15,8 +15,9 @@ func _physics_process(delta):
 	input_vector.x = Input.get_action_strength("derecha") - Input.get_action_strength("izquierda")
 	input_vector.y = Input.get_action_strength("abajo") - Input.get_action_strength("arriba")
 	_handle_movement(input_vector, delta)
+	_handle_disparar()
 	move_and_slide()	
-	_disparar()
+	
 
 func _handle_movement(input_vector, delta):
 	if input_vector != Vector2.ZERO:
@@ -25,6 +26,9 @@ func _handle_movement(input_vector, delta):
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, frenado * delta)
 
-func _disparar():
+func _handle_disparar():
 	if Input.is_action_just_pressed("disparar"):
-		pass
+		_disparar_balas()
+
+func _disparar_balas():
+	pass
