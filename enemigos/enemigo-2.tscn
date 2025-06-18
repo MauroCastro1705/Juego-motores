@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://gb6v2t3p5g53"]
+[gd_scene load_steps=6 format=3 uid="uid://gb6v2t3p5g53"]
 
 [ext_resource type="Texture2D" uid="uid://cuwuvum5wn352" path="res://Assets/Sprites/Ships/spaceShips_006.png" id="1_2epum"]
+[ext_resource type="Shader" uid="uid://bg0q4811nvnfa" path="res://Shaders/escudo_energia.gdshader" id="2_unqa3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6glxd"]
 radius = 14.0
 height = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w64qs"]
+radius = 60.0083
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8nuwl"]
+shader = ExtResource("2_unqa3")
+shader_parameter/color = Color(0.784314, 0.14902, 0.2, 1)
+shader_parameter/oscilacion = 4.0
 
 [node name="Enemigo-2" type="CharacterBody2D"]
 
@@ -23,3 +32,16 @@ position = Vector2(-14, 15)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
 position = Vector2(14, 15)
+
+[node name="escudo" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="escudo"]
+shape = SubResource("CircleShape2D_w64qs")
+debug_color = Color(0.567238, 0.45675, 0.831844, 0.42)
+
+[node name="Escudo_imagen" type="ColorRect" parent="escudo"]
+material = SubResource("ShaderMaterial_8nuwl")
+offset_left = -87.0
+offset_top = -87.0
+offset_right = 85.0
+offset_bottom = 85.0
