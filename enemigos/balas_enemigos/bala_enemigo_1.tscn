@@ -1,10 +1,73 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcphjfe43x6ek"]
+[gd_scene load_steps=7 format=3 uid="uid://bcphjfe43x6ek"]
 
 [ext_resource type="Script" uid="uid://dsk8ywcwni34g" path="res://enemigos/balas_enemigos/bala_enemigo_1.gd" id="1_1ento"]
+[ext_resource type="Texture2D" uid="uid://btx04loln78lo" path="res://Assets/balas y explosiones/Plasma_Large_png_processed.png" id="2_wraxp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ento"]
-radius = 5.0
-height = 20.0
+radius = 3.0
+height = 14.0
+
+[sub_resource type="Animation" id="Animation_mykgy"]
+resource_name = "new_animation"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("PlasmaLargePngProcessed:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlasmaLargePngProcessed:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0, 0, 0, 0]
+}
+
+[sub_resource type="Animation" id="Animation_l241e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlasmaLargePngProcessed:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlasmaLargePngProcessed:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vga6s"]
+_data = {
+&"RESET": SubResource("Animation_l241e"),
+&"new_animation": SubResource("Animation_mykgy")
+}
 
 [node name="BalaEnemigo1" type="Area2D" groups=["bala_enemigo"]]
 script = ExtResource("1_1ento")
@@ -12,8 +75,13 @@ script = ExtResource("1_1ento")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1ento")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 5.0
-offset_bottom = 7.0
+[node name="PlasmaLargePngProcessed" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+rotation = -3.14159
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_wraxp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vga6s")
+}
