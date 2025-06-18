@@ -22,5 +22,5 @@ shader_parameter/movement = 1.3
 shader_parameter/blur = 1.4
 shader_parameter/blur2 = 0.01
 shader_parameter/bg_speed = 0.1
-shader_parameter/mid_speed = 0.5
-shader_parameter/fg_speed = 1.0
+shader_parameter/mid_speed = 0.8
+shader_parameter/fg_speed = 8.0

@@ -51,6 +51,7 @@ offset_left = -113.977
 offset_top = -114.032
 offset_right = 112.023
 offset_bottom = 111.968
+metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="escudo"]
 offset_left = -40.0
