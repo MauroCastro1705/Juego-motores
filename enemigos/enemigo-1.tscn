@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://clmjuj1itk38j"]
+[gd_scene load_steps=6 format=3 uid="uid://clmjuj1itk38j"]
 
 [ext_resource type="Script" uid="uid://cghrs2gfuwtw2" path="res://enemigos/enemigo_1.gd" id="1_6glxd"]
 [ext_resource type="Texture2D" uid="uid://crio14v1vt34a" path="res://Assets/Sprites/Ships/spaceShips_001.png" id="1_pb86c"]
+[ext_resource type="PackedScene" uid="uid://bcphjfe43x6ek" path="res://enemigos/balas_enemigos/bala_enemigo_1.tscn" id="2_aa4yf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6glxd"]
 radius = 15.0
@@ -12,6 +13,7 @@ radius = 17.0294
 
 [node name="Enemigo-1" type="CharacterBody2D"]
 script = ExtResource("1_6glxd")
+bala_enemigo = ExtResource("2_aa4yf")
 
 [node name="SpaceShips001" type="Sprite2D" parent="."]
 scale = Vector2(0.191489, 0.191489)

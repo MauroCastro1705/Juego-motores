@@ -26,47 +26,64 @@ color = Color(0.0779451, 0.00175918, 0.138748, 1)
 metadata/_edit_lock_ = true
 
 [node name="paredes" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="paredes"]
+position = Vector2(-35.5, 425.5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="paredes/Area2D"]
+polygon = PackedVector2Array(-8.5, 102.5, -6.5, 439.5, 151.5, 454.5, 486.5, 452.5, 583.5, 408.5, 584.5, -131.5, 575.5, -481.5, 253.5, -474.5, 31.5, -461.5, 2.5, -126.5, -9.5, 55.5, -49.5, 24.5, -20.5, -517.5, 674.5, -534.5, 628.5, 482.5, 464.5, 501.5, 35.5, 493.5, -85.5, 451.5, -55.5, 102.5)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="paredes"]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="paredes/StaticBody2D"]
 position = Vector2(-35.5, 425.5)
 shape = SubResource("RectangleShape2D_tvrp2")
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="paredes"]
 position = Vector2(572, -3)
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="paredes/StaticBody2D2"]
 position = Vector2(-35.5, 425.5)
 shape = SubResource("RectangleShape2D_tvrp2")
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="paredes"]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="paredes/StaticBody2D3"]
 position = Vector2(258, -31)
 shape = SubResource("RectangleShape2D_srq4w")
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="paredes"]
 metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="paredes/StaticBody2D4"]
 position = Vector2(248, 863)
 shape = SubResource("RectangleShape2D_srq4w")
+metadata/_edit_lock_ = true
 
 [node name="Enemigo-1" parent="." instance=ExtResource("1_iptt1")]
 position = Vector2(250, 28)
 
 [node name="Jugador" parent="." instance=ExtResource("2_tvrp2")]
-position = Vector2(250, 561)
+position = Vector2(237, 743)
 
 [node name="Asteroide-1" parent="." instance=ExtResource("3_tvrp2")]
-position = Vector2(179, 324)
+position = Vector2(58, 277)
 
 [node name="Score" parent="." instance=ExtResource("5_ov6m4")]
 offset_left = 12.0
 offset_top = 811.0
 offset_right = 12.0
 offset_bottom = 811.0
+
+[connection signal="area_entered" from="paredes/Area2D" to="." method="_on_area_2d_area_entered"]

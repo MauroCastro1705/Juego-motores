@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcphjfe43x6ek"]
+
+[ext_resource type="Script" uid="uid://dsk8ywcwni34g" path="res://enemigos/balas_enemigos/bala_enemigo_1.gd" id="1_1ento"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mfkbu"]
+
+[node name="BalaEnemigo1" type="Area2D" groups=["bala_enemigo"]]
+script = ExtResource("1_1ento")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mfkbu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -7.0
+offset_top = -11.0
+offset_right = 8.0
+offset_bottom = 10.0

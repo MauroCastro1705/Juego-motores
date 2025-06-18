@@ -39,7 +39,7 @@ visible = false
 shape = SubResource("CircleShape2D_5vouv")
 debug_color = Color(0.567238, 0.45675, 0.831844, 0.42)
 
-[node name="ColorRect" type="ColorRect" parent="escudo"]
+[node name="Escudo_imagen" type="ColorRect" parent="escudo"]
 material = ExtResource("3_im34r")
 offset_left = -113.977
 offset_top = -114.032
