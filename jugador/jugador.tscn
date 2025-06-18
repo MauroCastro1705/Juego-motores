@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cogoxtxt25e1a"]
+[gd_scene load_steps=6 format=3 uid="uid://cogoxtxt25e1a"]
 
 [ext_resource type="Script" uid="uid://cdototyscoliu" path="res://jugador/jugador.gd" id="1_5vouv"]
 [ext_resource type="Texture2D" uid="uid://dbfk4uqaslqrj" path="res://Assets/Sprites/player_ship.png" id="2_5vouv"]
+[ext_resource type="Material" uid="uid://eq6vn7angv0h" path="res://Shaders/escudo_energia.tres" id="3_im34r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dapwa"]
 radius = 22.0907
@@ -34,7 +35,15 @@ texture = ExtResource("2_5vouv")
 [node name="escudo" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="escudo"]
+visible = false
 shape = SubResource("CircleShape2D_5vouv")
 debug_color = Color(0.567238, 0.45675, 0.831844, 0.42)
+
+[node name="ColorRect" type="ColorRect" parent="escudo"]
+material = ExtResource("3_im34r")
+offset_left = -113.977
+offset_top = -114.032
+offset_right = 112.023
+offset_bottom = 111.968
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
