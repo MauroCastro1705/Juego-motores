@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var marker2 = $Marker2D2
 @onready var timer_escudo = $Timer_escudo
 @onready var area_escudo = $escudo
-var tiempo_recarga_escudo:float = 10.0
+var tiempo_recarga_escudo:float = 5.0
 @onready var barra_escudo = $escudo/ProgressBar
 var se_desactivo_el_escudo:bool = false
 #bala
@@ -19,6 +19,7 @@ var se_desactivo_el_escudo:bool = false
 func _ready() -> void:
 	_set_barra_escudo()
 	se_desactivo_el_escudo = false
+	timer_escudo.wait_time = tiempo_recarga_escudo
 	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO

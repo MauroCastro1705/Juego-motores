@@ -5,3 +5,4 @@
 [resource]
 shader = ExtResource("1_qxtpf")
 shader_parameter/color = Color(0.0550734, 0.4487, 0.671176, 1)
+shader_parameter/oscilacion = 4.0
