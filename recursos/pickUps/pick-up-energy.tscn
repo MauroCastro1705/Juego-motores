@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://da14v514bql8t"]
+
+[ext_resource type="Script" uid="uid://t5juy6vbl4tw" path="res://recursos/pickUps/pick_up_energy.gd" id="1_erykd"]
+[ext_resource type="Texture2D" uid="uid://cxlcn00e0c3la" path="res://recursos/pickUps/Powerup_Energy_png_processed.png" id="1_xj1ca"]
+[ext_resource type="Shader" uid="uid://bg0q4811nvnfa" path="res://Shaders/escudo_energia.gdshader" id="3_swtwj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3feyg"]
+radius = 9.0
+height = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_erykd"]
+shader = ExtResource("3_swtwj")
+shader_parameter/color = Color(0.94902, 0.168627, 0.458824, 1)
+shader_parameter/oscilacion = 7.0
+
+[node name="Pick-up-energy" type="Area2D" groups=["pick-up"]]
+script = ExtResource("1_erykd")
+
+[node name="PowerupEnergyPngProcessed" type="Sprite2D" parent="."]
+scale = Vector2(0.69, 0.69)
+texture = ExtResource("1_xj1ca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_3feyg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_erykd")
+offset_left = -28.0
+offset_top = -19.0
+offset_right = 28.0
+offset_bottom = 20.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

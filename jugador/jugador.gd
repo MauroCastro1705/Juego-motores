@@ -101,3 +101,9 @@ func _regenerar_escudo_pickup():
 		timer_escudo.stop()
 	call_deferred("_activar_escudo")
 	print("Escudo regenerado con pickup(player)")
+
+func _regenerar_vida_pickup():
+	vida_player = 3
+	
+func _energy_pickup():
+	pass

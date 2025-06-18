@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://m7xk0ovxqtyv"]
+
+[ext_resource type="Script" uid="uid://crcepaco0a0yu" path="res://recursos/pickUps/pick_up_vida.gd" id="1_o8n15"]
+[ext_resource type="Texture2D" uid="uid://4vfpa6pf12pg" path="res://recursos/pickUps/Powerup_Health_png_processed.png" id="2_o8n15"]
+[ext_resource type="Shader" uid="uid://bg0q4811nvnfa" path="res://Shaders/escudo_energia.gdshader" id="3_nx7lv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3feyg"]
+radius = 9.0
+height = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pxpoo"]
+shader = ExtResource("3_nx7lv")
+shader_parameter/color = Color(0.643137, 0.231373, 0.0823529, 1)
+shader_parameter/oscilacion = 7.0
+
+[node name="Pick-up-vida" type="Area2D" groups=["pick-up"]]
+script = ExtResource("1_o8n15")
+
+[node name="PowerupHealthPngProcessed" type="Sprite2D" parent="."]
+scale = Vector2(0.69, 0.69)
+texture = ExtResource("2_o8n15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_3feyg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_pxpoo")
+offset_left = -28.0
+offset_top = -19.0
+offset_right = 28.0
+offset_bottom = 20.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

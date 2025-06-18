@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://p8n1cyrmh8d3"
-path="res://.godot/imported/Powerup_Shields_png_processed.png-04f54cece205bd3ba3f7b5abf78dac9b.ctex"
+path="res://.godot/imported/Powerup_Shields_png_processed.png-9725d6175e7030370e52cd7fee2658ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Powerup_Shields_png_processed.png"
-dest_files=["res://.godot/imported/Powerup_Shields_png_processed.png-04f54cece205bd3ba3f7b5abf78dac9b.ctex"]
+source_file="res://recursos/pickUps/Powerup_Shields_png_processed.png"
+dest_files=["res://.godot/imported/Powerup_Shields_png_processed.png-9725d6175e7030370e52cd7fee2658ab.ctex"]
 
 [params]
 

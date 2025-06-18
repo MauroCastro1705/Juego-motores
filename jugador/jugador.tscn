@@ -54,10 +54,10 @@ offset_bottom = 111.968
 metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="escudo"]
-offset_left = -40.0
-offset_top = -43.0
-offset_right = 93.0
-offset_bottom = -36.0
+offset_left = -31.0
+offset_top = -41.0
+offset_right = 72.0
+offset_bottom = -37.0
 scale = Vector2(0.6, 0.6)
 theme_override_styles/background = SubResource("StyleBoxFlat_im34r")
 theme_override_styles/fill = SubResource("StyleBoxFlat_a407c")

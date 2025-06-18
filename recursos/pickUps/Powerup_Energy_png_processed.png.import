@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4vfpa6pf12pg"
-path="res://.godot/imported/Powerup_Health_png_processed.png-126b2a251422327e70382117e780ea79.ctex"
+uid="uid://cxlcn00e0c3la"
+path="res://.godot/imported/Powerup_Energy_png_processed.png-af2fae208cddd1505b178697be844b5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PixelSpaceRage/256px/Powerup_Health_png_processed.png"
-dest_files=["res://.godot/imported/Powerup_Health_png_processed.png-126b2a251422327e70382117e780ea79.ctex"]
+source_file="res://recursos/pickUps/Powerup_Energy_png_processed.png"
+dest_files=["res://.godot/imported/Powerup_Energy_png_processed.png-af2fae208cddd1505b178697be844b5f.ctex"]
 
 [params]
 
