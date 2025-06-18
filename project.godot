@@ -38,6 +38,7 @@ folder_colors={
 jugador=""
 bala_enemigo=""
 bala_player=""
+pick-up=""
 
 [input]
 

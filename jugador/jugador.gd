@@ -31,12 +31,14 @@ func _physics_process(delta):
 	_handle_barra_escudo()
 	
 func _handle_movement(input_vector, delta):
+	
 	if input_vector != Vector2.ZERO:
 		# move_toward = interpola
 		velocity = velocity.move_toward(input_vector * max_speed, aceleracion * delta)
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, frenado * delta)
 
+##DISPARO·····
 func _handle_disparar():
 	if Input.is_action_just_pressed("disparar"):
 		#posible logica de fire-rate
@@ -48,9 +50,9 @@ func _disparar_balas():
 		bala.global_position = global_position
 		get_tree().current_scene.add_child(bala)
 
+##ESCUDO·····
 func _on_timer_timeout() -> void:
 	_activar_escudo()
-
 
 func _on_escudo_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bala_enemigo"):
@@ -64,7 +66,7 @@ func _check_escudo():
 		timer_escudo.wait_time = tiempo_recarga_escudo
 		se_desactivo_el_escudo = true
 		call_deferred("_desactivar_escudo")
-		
+
 func _activar_escudo():
 	$escudo/Escudo_imagen.visible = true
 	$escudo/CollisionShape2D.disabled = false
@@ -83,7 +85,7 @@ func _desactivar_escudo():
 func _set_barra_escudo():
 	barra_escudo.min_value = 0.0
 	barra_escudo.max_value = tiempo_recarga_escudo
-	
+
 func _handle_barra_escudo():
 	if se_desactivo_el_escudo and timer_escudo.time_left > 0:
 		barra_escudo.visible = true
@@ -91,3 +93,11 @@ func _handle_barra_escudo():
 		barra_escudo.value = timer_escudo.time_left
 	else:
 		barra_escudo.visible = false
+
+##PICK UPS·····
+
+func _regenerar_escudo_pickup():
+	if not timer_escudo.is_stopped():
+		timer_escudo.stop()
+	call_deferred("_activar_escudo")
+	print("Escudo regenerado con pickup(player)")

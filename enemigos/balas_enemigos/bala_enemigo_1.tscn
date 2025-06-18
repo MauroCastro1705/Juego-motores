@@ -2,16 +2,18 @@
 
 [ext_resource type="Script" uid="uid://dsk8ywcwni34g" path="res://enemigos/balas_enemigos/bala_enemigo_1.gd" id="1_1ento"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mfkbu"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ento"]
+radius = 5.0
+height = 20.0
 
 [node name="BalaEnemigo1" type="Area2D" groups=["bala_enemigo"]]
 script = ExtResource("1_1ento")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_mfkbu")
+shape = SubResource("CapsuleShape2D_1ento")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -7.0
-offset_top = -11.0
-offset_right = 8.0
-offset_bottom = 10.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 5.0
+offset_bottom = 7.0
