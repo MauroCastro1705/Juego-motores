@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cogoxtxt25e1a"]
+[gd_scene load_steps=8 format=3 uid="uid://cogoxtxt25e1a"]
 
 [ext_resource type="Script" uid="uid://cdototyscoliu" path="res://jugador/jugador.gd" id="1_5vouv"]
 [ext_resource type="Texture2D" uid="uid://dbfk4uqaslqrj" path="res://Assets/Sprites/player_ship.png" id="2_5vouv"]
@@ -9,6 +9,12 @@ radius = 22.0907
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5vouv"]
 radius = 79.0253
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im34r"]
+bg_color = Color(0.0980392, 0.670588, 0.772549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a407c"]
+bg_color = Color(0.0898552, 0.0295215, 0.0467199, 1)
 
 [node name="Jugador" type="CharacterBody2D" groups=["jugador"]]
 rotation = -3.13306
@@ -23,7 +29,7 @@ position = Vector2(10.1277, 14.9141)
 [node name="Marker2D2" type="Marker2D" parent="."]
 position = Vector2(-9.8716, 15.0848)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer_escudo" type="Timer" parent="."]
 wait_time = 10.0
 
 [node name="PlayerShip" type="Sprite2D" parent="."]
@@ -46,4 +52,15 @@ offset_top = -114.032
 offset_right = 112.023
 offset_bottom = 111.968
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="ProgressBar" type="ProgressBar" parent="escudo"]
+offset_left = -40.0
+offset_top = -43.0
+offset_right = 93.0
+offset_bottom = -36.0
+scale = Vector2(0.6, 0.6)
+theme_override_styles/background = SubResource("StyleBoxFlat_im34r")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a407c")
+show_percentage = false
+
+[connection signal="timeout" from="Timer_escudo" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="escudo" to="." method="_on_escudo_area_entered"]
