@@ -1,5 +1,9 @@
 extends Node
 
+#game variables
+var max_pickups_on_screen:int = 4
+var current_pickups_on_screen:int
+
 
 #player variables
 var player_score:int = 0

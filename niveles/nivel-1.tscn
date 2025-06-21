@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ba15ok7ilb0gj"]
+[gd_scene load_steps=10 format=3 uid="uid://ba15ok7ilb0gj"]
 
 [ext_resource type="PackedScene" uid="uid://clmjuj1itk38j" path="res://enemigos/enemigo-1.tscn" id="1_iptt1"]
 [ext_resource type="Script" uid="uid://ca6v2rhk2ralj" path="res://niveles/nivel_1.gd" id="1_srq4w"]
@@ -6,9 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cogoxtxt25e1a" path="res://jugador/jugador.tscn" id="2_tvrp2"]
 [ext_resource type="PackedScene" uid="uid://beci6n7u7rygv" path="res://recursos/obstaculos/asteroide-1.tscn" id="3_tvrp2"]
 [ext_resource type="PackedScene" uid="uid://dh63o5ebcdiet" path="res://UI/score.tscn" id="5_ov6m4"]
-[ext_resource type="PackedScene" uid="uid://c24him4uv8ovs" path="res://recursos/pickUps/pick-up-escudo.tscn" id="7_gyqaj"]
-[ext_resource type="PackedScene" uid="uid://m7xk0ovxqtyv" path="res://recursos/pickUps/pick-up-vida.tscn" id="8_ktvln"]
-[ext_resource type="PackedScene" uid="uid://da14v514bql8t" path="res://recursos/pickUps/pick-up-energy.tscn" id="9_sdvcx"]
+[ext_resource type="PackedScene" uid="uid://tydtg2rtetc5" path="res://recursos/spawners/pickup_spawner.tscn" id="7_gyqaj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvrp2"]
 size = Vector2(61, 891)
@@ -89,13 +87,7 @@ offset_top = 815.0
 offset_right = 180.0
 offset_bottom = 815.0
 
-[node name="Pick-up-escudo" parent="." instance=ExtResource("7_gyqaj")]
-position = Vector2(294, 536)
-
-[node name="Pick-up-vida" parent="." instance=ExtResource("8_ktvln")]
-position = Vector2(157, 587)
-
-[node name="Pick-up-energy" parent="." instance=ExtResource("9_sdvcx")]
-position = Vector2(195, 458)
+[node name="PickupSpawner" parent="." instance=ExtResource("7_gyqaj")]
+position = Vector2(252, 542)
 
 [connection signal="area_entered" from="paredes/Area2D" to="." method="_on_area_2d_area_entered"]

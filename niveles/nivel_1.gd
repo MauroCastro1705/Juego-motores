@@ -11,6 +11,5 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	_borrar_balas(area)
 		
 func _borrar_balas(area):
-	if area.is_in_group("bala_enemigo") or area.is_in_group("bala_player") or area.is_in_group("obstaculo"):
+	if area.is_in_group("bala_enemigo") or area.is_in_group("bala_player") or area.is_in_group("obstaculo") or area.is_in_group("pick-up"):
 		area.queue_free()
-		print("borrado = ", area)
