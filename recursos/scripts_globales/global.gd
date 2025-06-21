@@ -1,7 +1,11 @@
 extends Node
 
-var player_score:int = 0
 
+#player variables
+var player_score:int = 0
+var velocidad_bala_player:float = 310.0
+
+#enemy varaibles
 var vida_enemigo1:int = 3
 var puntaje_enemigo1:int = 10
 var velocidad_bala_enemigo1:float = 300.0

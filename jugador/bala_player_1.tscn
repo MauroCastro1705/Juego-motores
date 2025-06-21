@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd5in6gsfu1qe"]
+
+[ext_resource type="Script" uid="uid://b73svajpgjfpl" path="res://jugador/bala_player_1.gd" id="1_d27yq"]
+[ext_resource type="Texture2D" uid="uid://cekampj8jn84o" path="res://Assets/balas y explosiones/Minigun_Large_png_processed.png" id="1_nisqp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1ento"]
+radius = 3.0
+height = 14.0
+
+[sub_resource type="Animation" id="Animation_l241e"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinigunLargePngProcessed:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MinigunLargePngProcessed:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.888889, 1.14815)]
+}
+
+[sub_resource type="Animation" id="Animation_mykgy"]
+resource_name = "new_animation"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MinigunLargePngProcessed:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.457456, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 0, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MinigunLargePngProcessed:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.3, 0.457456, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.929, 1.2), Vector2(0.888889, 1.14815), Vector2(0.888889, 1), Vector2(0.888889, 1.28226)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vga6s"]
+_data = {
+&"RESET": SubResource("Animation_l241e"),
+&"new_animation": SubResource("Animation_mykgy")
+}
+
+[node name="BalaPlayer" type="Area2D" groups=["bala_player"]]
+script = ExtResource("1_d27yq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1ento")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vga6s")
+}
+autoplay = "new_animation"
+
+[node name="MinigunLargePngProcessed" type="Sprite2D" parent="."]
+position = Vector2(0, 4.68953)
+scale = Vector2(0.888889, 1.14815)
+texture = ExtResource("1_nisqp")

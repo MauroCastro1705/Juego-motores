@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cogoxtxt25e1a"]
+[gd_scene load_steps=9 format=3 uid="uid://cogoxtxt25e1a"]
 
 [ext_resource type="Script" uid="uid://cdototyscoliu" path="res://jugador/jugador.gd" id="1_5vouv"]
 [ext_resource type="Texture2D" uid="uid://dbfk4uqaslqrj" path="res://Assets/Sprites/player_ship.png" id="2_5vouv"]
+[ext_resource type="PackedScene" uid="uid://bd5in6gsfu1qe" path="res://jugador/bala_player_1.tscn" id="2_im34r"]
 [ext_resource type="Material" uid="uid://eq6vn7angv0h" path="res://Shaders/escudo_energia.tres" id="3_im34r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dapwa"]
@@ -19,6 +20,7 @@ bg_color = Color(0.0898552, 0.0295215, 0.0467199, 1)
 [node name="Jugador" type="CharacterBody2D" groups=["jugador"]]
 rotation = -3.13306
 script = ExtResource("1_5vouv")
+bala_player = ExtResource("2_im34r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dapwa")
@@ -54,11 +56,13 @@ offset_bottom = 111.968
 metadata/_edit_use_anchors_ = true
 
 [node name="ProgressBar" type="ProgressBar" parent="escudo"]
-offset_left = -31.0
-offset_top = -41.0
-offset_right = 72.0
-offset_bottom = -37.0
+offset_left = -51.3821
+offset_top = -44.5632
+offset_right = 51.6179
+offset_bottom = -37.5632
+rotation = -0.00865828
 scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(51.1234, 3.89404)
 theme_override_styles/background = SubResource("StyleBoxFlat_im34r")
 theme_override_styles/fill = SubResource("StyleBoxFlat_a407c")
 show_percentage = false

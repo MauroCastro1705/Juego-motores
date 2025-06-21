@@ -14,7 +14,7 @@ config/name="grupo-motores"
 config/tags=PackedStringArray("grupo", "motores")
 run/main_scene="uid://ba15ok7ilb0gj"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dbfk4uqaslqrj"
 
 [autoload]
 
@@ -24,6 +24,9 @@ Global="*res://recursos/scripts_globales/global.gd"
 
 window/size/viewport_width=500
 window/size/viewport_height=850
+window/stretch/mode="canvas_items"
+window/handheld/orientation=1
+window/vsync/vsync_mode=0
 
 [file_customization]
 
@@ -40,6 +43,7 @@ jugador=""
 bala_enemigo=""
 bala_player=""
 pick-up=""
+obstaculo=""
 
 [input]
 
