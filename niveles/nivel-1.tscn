@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba15ok7ilb0gj"]
+[gd_scene load_steps=12 format=3 uid="uid://ba15ok7ilb0gj"]
 
 [ext_resource type="PackedScene" uid="uid://clmjuj1itk38j" path="res://enemigos/enemigo-1.tscn" id="1_iptt1"]
 [ext_resource type="Script" uid="uid://ca6v2rhk2ralj" path="res://niveles/nivel_1.gd" id="1_srq4w"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dh63o5ebcdiet" path="res://UI/score.tscn" id="5_ov6m4"]
 [ext_resource type="PackedScene" uid="uid://tydtg2rtetc5" path="res://recursos/spawners/pickup_spawner.tscn" id="7_gyqaj"]
 [ext_resource type="PackedScene" uid="uid://dykovkbm6qgoe" path="res://UI/vidas.tscn" id="8_ktvln"]
+[ext_resource type="PackedScene" uid="uid://db8vadjwou13a" path="res://recursos/spawners/enemy_spawner.tscn" id="9_sdvcx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvrp2"]
 size = Vector2(61, 891)
@@ -82,19 +83,30 @@ position = Vector2(237, 743)
 [node name="Asteroide-1" parent="." instance=ExtResource("3_tvrp2")]
 position = Vector2(58, 277)
 
-[node name="Score" parent="." instance=ExtResource("5_ov6m4")]
+[node name="PickupSpawner" parent="." instance=ExtResource("7_gyqaj")]
+position = Vector2(252, 542)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Score" parent="UI" instance=ExtResource("5_ov6m4")]
+layout_mode = 1
 offset_left = 180.0
 offset_top = 815.0
 offset_right = 180.0
 offset_bottom = 815.0
 
-[node name="PickupSpawner" parent="." instance=ExtResource("7_gyqaj")]
-position = Vector2(252, 542)
-
-[node name="Vidas" parent="." instance=ExtResource("8_ktvln")]
+[node name="Vidas" parent="UI" instance=ExtResource("8_ktvln")]
+layout_mode = 1
 offset_left = 389.0
 offset_top = 823.0
 offset_right = 389.0
 offset_bottom = 823.0
+
+[node name="EnemySpawner" parent="." instance=ExtResource("9_sdvcx")]
+position = Vector2(254, 69)
 
 [connection signal="area_entered" from="paredes/Area2D" to="." method="_on_area_2d_area_entered"]

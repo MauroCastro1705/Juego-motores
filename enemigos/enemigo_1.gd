@@ -40,6 +40,7 @@ func _on_timer_disparo_timeout() -> void:
 
 func _check_muerte():
 	if vida_local == 0:
+		Global.current_enemy_on_screen -= 1
 		sprite_nave.hide() 
 		sprite_explosion.show()
 		sprite_explosion.play("muerte")

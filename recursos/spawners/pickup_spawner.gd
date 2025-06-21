@@ -46,6 +46,6 @@ func _instanciar_pickup(pickup):
 		nuevo_pickup.global_position = _posicion_aleatoria_en_area()
 		get_tree().current_scene.add_child(nuevo_pickup)
 		Global.current_pickups_on_screen += 1
-		print("pick up ", pickup)
+		
 	else:
 		print("maxima cant de pickups")

@@ -16,6 +16,9 @@ var vida_enemigo1:int = 3
 var puntaje_enemigo1:int = 10
 var velocidad_bala_enemigo1:float = 300.0
 var dmg_bala_enemigo1:int = 1
+var max_enemy1_on_screen:int = 4
+var current_enemy_on_screen:int  = 0
+
 
 func _update_score(new_score):
 	var a = player_score
