@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ba15ok7ilb0gj"]
+[gd_scene load_steps=11 format=3 uid="uid://ba15ok7ilb0gj"]
 
 [ext_resource type="PackedScene" uid="uid://clmjuj1itk38j" path="res://enemigos/enemigo-1.tscn" id="1_iptt1"]
 [ext_resource type="Script" uid="uid://ca6v2rhk2ralj" path="res://niveles/nivel_1.gd" id="1_srq4w"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://beci6n7u7rygv" path="res://recursos/obstaculos/asteroide-1.tscn" id="3_tvrp2"]
 [ext_resource type="PackedScene" uid="uid://dh63o5ebcdiet" path="res://UI/score.tscn" id="5_ov6m4"]
 [ext_resource type="PackedScene" uid="uid://tydtg2rtetc5" path="res://recursos/spawners/pickup_spawner.tscn" id="7_gyqaj"]
+[ext_resource type="PackedScene" uid="uid://dykovkbm6qgoe" path="res://UI/vidas.tscn" id="8_ktvln"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvrp2"]
 size = Vector2(61, 891)
@@ -89,5 +90,11 @@ offset_bottom = 815.0
 
 [node name="PickupSpawner" parent="." instance=ExtResource("7_gyqaj")]
 position = Vector2(252, 542)
+
+[node name="Vidas" parent="." instance=ExtResource("8_ktvln")]
+offset_left = 389.0
+offset_top = 823.0
+offset_right = 389.0
+offset_bottom = 823.0
 
 [connection signal="area_entered" from="paredes/Area2D" to="." method="_on_area_2d_area_entered"]

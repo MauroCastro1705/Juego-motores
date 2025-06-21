@@ -42,8 +42,9 @@ func _ready() -> void:
 	fire_rate_timer.wait_time = fire_rate_normal
 	max_energy_bar.visible = false
 	max_energy_label.visible = false
-	vida_actual = vida_player
+	Global.player_actual_life = Global.player_max_life
 	
+
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("derecha") - Input.get_action_strength("izquierda")
@@ -141,7 +142,8 @@ func _regenerar_escudo_pickup():
 	print("Escudo regenerado con pickup(player)")
 
 func _regenerar_vida_pickup():
-	vida_player = 3
+	Global.player_actual_life  += 1
+	#mostrar en pantalla la vida?
 	
 func _energy_pickup():
 	energy_timer.start()
@@ -170,13 +172,13 @@ func _titilar_rojo():
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bala_enemigo"):
-		vida_actual -= 1
+		Global.player_actual_life -= 1	
 		_titilar_rojo()
 		area.queue_free()
 		_check_muerte_player()
 		
 func _check_muerte_player():
-	if vida_actual == 0:
+	if Global.player_actual_life  == 0:
 		print("player murio")
 		player_murio = true
 		sprite_nave.hide() 

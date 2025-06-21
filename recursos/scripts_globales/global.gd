@@ -8,6 +8,8 @@ var current_pickups_on_screen:int
 #player variables
 var player_score:int = 0
 var velocidad_bala_player:float = 310.0
+var player_actual_life:int
+var player_max_life:int = 3
 
 #enemy varaibles
 var vida_enemigo1:int = 3

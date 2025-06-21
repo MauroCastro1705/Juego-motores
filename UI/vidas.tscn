@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dykovkbm6qgoe"]
+
+[ext_resource type="Script" uid="uid://dl1ehu06c1sec" path="res://UI/vidas.gd" id="1_34721"]
+
+[node name="Vidas" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_34721")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 62
+text = "Vidas :"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_right = 199.0
+offset_bottom = 86.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 62
