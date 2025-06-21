@@ -6,8 +6,9 @@ extends CharacterBody2D
 @export var vida_player:int = 3
 @export var vida_escudo:int = 1
 
-@onready var marker = $Marker2D #para instanciar balas
-@onready var marker2 = $Marker2D2
+@onready var cañon1 = $Marker2D #para instanciar balas
+@onready var cañon2 = $Marker2D2
+var usar_cañon1 := true 
 @onready var timer_escudo = $Timer_escudo
 @onready var area_escudo = $escudo
 var tiempo_recarga_escudo:float = 5.0
@@ -45,10 +46,16 @@ func _handle_disparar():
 		_disparar_balas()
 
 func _disparar_balas():
-	if bala_player:
-		var bala = bala_player.instantiate()
-		bala.global_position = global_position
-		get_tree().current_scene.add_child(bala)
+	var bala = bala_player.instantiate()
+	var salida : Marker2D
+	if usar_cañon1:
+		salida = cañon1
+	else:
+		salida = cañon2
+	bala.global_position = salida.global_position
+	get_tree().current_scene.add_child(bala)
+	# Cambiar para el siguiente disparo
+	usar_cañon1 = not usar_cañon1
 
 ##ESCUDO·····
 func _on_timer_timeout() -> void:
