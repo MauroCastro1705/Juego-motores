@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cogoxtxt25e1a"]
+[gd_scene load_steps=11 format=3 uid="uid://cogoxtxt25e1a"]
 
 [ext_resource type="Script" uid="uid://cdototyscoliu" path="res://jugador/jugador.gd" id="1_5vouv"]
 [ext_resource type="Texture2D" uid="uid://dbfk4uqaslqrj" path="res://Assets/Sprites/player_ship.png" id="2_5vouv"]
@@ -15,7 +15,13 @@ radius = 79.0253
 bg_color = Color(0.0980392, 0.670588, 0.772549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a407c"]
-bg_color = Color(0.0898552, 0.0295215, 0.0467199, 1)
+bg_color = Color(0.052275, 0.000501269, 0.00695695, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu2ya"]
+bg_color = Color(0.0881845, 0.000137865, 0.0296252, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xreb1"]
+bg_color = Color(0.636841, 0.0458966, 0.24097, 1)
 
 [node name="Jugador" type="CharacterBody2D" groups=["jugador"]]
 rotation = -3.13306
@@ -67,5 +73,35 @@ theme_override_styles/background = SubResource("StyleBoxFlat_im34r")
 theme_override_styles/fill = SubResource("StyleBoxFlat_a407c")
 show_percentage = false
 
+[node name="fire_rate" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="max_energy_timer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="max_energy_bar" type="ProgressBar" parent="."]
+offset_left = -51.4504
+offset_top = -52.5629
+offset_right = 51.5496
+offset_bottom = -45.5629
+rotation = 3.13287
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(51.1234, 3.89404)
+theme_override_styles/background = SubResource("StyleBoxFlat_vu2ya")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xreb1")
+show_percentage = false
+
+[node name="energy_label" type="Label" parent="."]
+offset_left = 48.5204
+offset_top = -56.4161
+offset_right = 541.52
+offset_bottom = 12.5839
+rotation = 3.13287
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 50
+text = "MAX ENERGY MODE!"
+
 [connection signal="timeout" from="Timer_escudo" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="escudo" to="." method="_on_escudo_area_entered"]
+[connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="max_energy_timer" to="." method="_on_max_energy_timer_timeout"]

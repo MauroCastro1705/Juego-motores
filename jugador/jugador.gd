@@ -6,9 +6,23 @@ extends CharacterBody2D
 @export var vida_player:int = 3
 @export var vida_escudo:int = 1
 
+#armas
 @onready var cañon1 = $Marker2D #para instanciar balas
 @onready var cañon2 = $Marker2D2
 var usar_cañon1 := true 
+@onready var fire_rate_timer = $fire_rate
+var disparando := false
+@onready var energy_timer = $max_energy_timer
+
+var fire_rate_normal = 0.8
+var fire_rate_max_energy = 0.4
+
+#max energy mode
+@onready var max_energy_bar = $max_energy_bar
+var se_entro_en_max_energy_mode:bool = false
+@onready var max_energy_label = $energy_label
+
+
 @onready var timer_escudo = $Timer_escudo
 @onready var area_escudo = $escudo
 var tiempo_recarga_escudo:float = 5.0
@@ -21,6 +35,9 @@ func _ready() -> void:
 	_set_barra_escudo()
 	se_desactivo_el_escudo = false
 	timer_escudo.wait_time = tiempo_recarga_escudo
+	fire_rate_timer.wait_time = fire_rate_normal
+	max_energy_bar.visible = false
+	max_energy_label.visible = false
 	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -30,9 +47,9 @@ func _physics_process(delta):
 	_handle_disparar()
 	move_and_slide()
 	_handle_barra_escudo()
+	_handle_max_energy()
 	
 func _handle_movement(input_vector, delta):
-	
 	if input_vector != Vector2.ZERO:
 		# move_toward = interpola
 		velocity = velocity.move_toward(input_vector * max_speed, aceleracion * delta)
@@ -41,9 +58,17 @@ func _handle_movement(input_vector, delta):
 
 ##DISPARO·····
 func _handle_disparar():
-	if Input.is_action_just_pressed("disparar"):
-		#posible logica de fire-rate
-		_disparar_balas()
+	if Input.is_action_pressed("disparar"):
+		if not disparando:
+			disparando = true
+			fire_rate_timer.start()
+	elif disparando:
+		disparando = false
+		fire_rate_timer.stop()
+
+func _on_fire_rate_timeout() -> void:
+	_disparar_balas()
+
 
 func _disparar_balas():
 	var bala = bala_player.instantiate()
@@ -113,4 +138,20 @@ func _regenerar_vida_pickup():
 	vida_player = 3
 	
 func _energy_pickup():
-	pass
+	energy_timer.start()
+	fire_rate_timer.wait_time = fire_rate_max_energy
+
+func _on_max_energy_timer_timeout() -> void:
+	fire_rate_timer.wait_time = fire_rate_normal
+	max_energy_bar.visible = false
+	energy_timer.stop()
+
+func _handle_max_energy():
+	if energy_timer.time_left > 0:
+		max_energy_bar.visible = true
+		max_energy_bar.max_value = energy_timer.wait_time
+		max_energy_bar.value = energy_timer.time_left
+		max_energy_label.visible = true
+	else:
+		max_energy_bar.visible = false
+		max_energy_label.visible = false
