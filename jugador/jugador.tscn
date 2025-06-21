@@ -1,9 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://cogoxtxt25e1a"]
+[gd_scene load_steps=22 format=3 uid="uid://cogoxtxt25e1a"]
 
 [ext_resource type="Script" uid="uid://cdototyscoliu" path="res://jugador/jugador.gd" id="1_5vouv"]
 [ext_resource type="Texture2D" uid="uid://dbfk4uqaslqrj" path="res://Assets/Sprites/player_ship.png" id="2_5vouv"]
 [ext_resource type="PackedScene" uid="uid://bd5in6gsfu1qe" path="res://jugador/bala_player_1.tscn" id="2_im34r"]
 [ext_resource type="Material" uid="uid://eq6vn7angv0h" path="res://Shaders/escudo_energia.tres" id="3_im34r"]
+[ext_resource type="Texture2D" uid="uid://btd28fh336jgl" path="res://Assets/balas y explosiones/Explosion01_Frame_01_png_processed.png" id="5_slyet"]
+[ext_resource type="Texture2D" uid="uid://bnrkl4o3khhgs" path="res://Assets/balas y explosiones/Explosion01_Frame_02_png_processed.png" id="6_mk724"]
+[ext_resource type="Texture2D" uid="uid://dvxqmkrogbe7x" path="res://Assets/balas y explosiones/Explosion01_Frame_03_png_processed.png" id="7_vmphg"]
+[ext_resource type="Texture2D" uid="uid://b3a5lcqbbjwie" path="res://Assets/balas y explosiones/Explosion01_Frame_04_png_processed.png" id="8_5iu33"]
+[ext_resource type="Texture2D" uid="uid://bm5axmmhng2um" path="res://Assets/balas y explosiones/Explosion01_Frame_05_png_processed.png" id="9_llqwg"]
+[ext_resource type="Texture2D" uid="uid://gp3wjkf4uxyh" path="res://Assets/balas y explosiones/Explosion01_Frame_06_png_processed.png" id="10_ifo1j"]
+[ext_resource type="Texture2D" uid="uid://duhj7b5e24aot" path="res://Assets/balas y explosiones/Explosion01_Frame_07_png_processed.png" id="11_jcs7t"]
+[ext_resource type="Texture2D" uid="uid://biflonoym5ird" path="res://Assets/balas y explosiones/Explosion01_Frame_08_png_processed.png" id="12_s00yy"]
+[ext_resource type="Texture2D" uid="uid://bp6duhljkxgm" path="res://Assets/balas y explosiones/Explosion01_Frame_09_png_processed.png" id="13_f7jpx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dapwa"]
 radius = 22.0907
@@ -22,6 +31,45 @@ bg_color = Color(0.0881845, 0.000137865, 0.0296252, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xreb1"]
 bg_color = Color(0.636841, 0.0458966, 0.24097, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a407c"]
+radius = 21.9907
+height = 43.9813
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dy1v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_slyet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mk724")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vmphg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5iu33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_llqwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ifo1j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jcs7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_s00yy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_f7jpx")
+}],
+"loop": true,
+"name": &"muerte",
+"speed": 15.0
+}]
 
 [node name="Jugador" type="CharacterBody2D" groups=["jugador"]]
 rotation = -3.13306
@@ -101,7 +149,20 @@ scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 50
 text = "MAX ENERGY MODE!"
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_a407c")
+debug_color = Color(0.918914, 0.218974, 0.461204, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.38419e-07, 2.38419e-07)
+scale = Vector2(1.27359, 1.27359)
+sprite_frames = SubResource("SpriteFrames_1dy1v")
+animation = &"muerte"
+
 [connection signal="timeout" from="Timer_escudo" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="escudo" to="." method="_on_escudo_area_entered"]
 [connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="max_energy_timer" to="." method="_on_max_energy_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

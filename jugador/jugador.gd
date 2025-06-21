@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
-@export var max_speed: float = 300.0     # Velocidad máxima
-@export var aceleracion: float = 900.0   # Qué tan rápido acelera
-@export var frenado: float = 800.0      # Qué tan rápido se frena
+@export var max_speed: float = 200.0     # Velocidad máxima
+@export var aceleracion: float = 500.0   # Qué tan rápido acelera
+@export var frenado: float = 600.0      # Qué tan rápido se frena
 @export var vida_player:int = 3
 @export var vida_escudo:int = 1
+var vida_actual
+@onready var player_murio:bool = false
 
+@onready var sprite_nave = $PlayerShip
+@onready var sprite_explosion = $AnimatedSprite2D
 #armas
 @onready var cañon1 = $Marker2D #para instanciar balas
 @onready var cañon2 = $Marker2D2
@@ -38,6 +42,7 @@ func _ready() -> void:
 	fire_rate_timer.wait_time = fire_rate_normal
 	max_energy_bar.visible = false
 	max_energy_label.visible = false
+	vida_actual = vida_player
 	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -48,6 +53,7 @@ func _physics_process(delta):
 	move_and_slide()
 	_handle_barra_escudo()
 	_handle_max_energy()
+	_game_over()
 	
 func _handle_movement(input_vector, delta):
 	if input_vector != Vector2.ZERO:
@@ -155,3 +161,29 @@ func _handle_max_energy():
 	else:
 		max_energy_bar.visible = false
 		max_energy_label.visible = false
+
+
+func _titilar_rojo():
+	sprite_nave.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.1).timeout
+	sprite_nave.modulate = Color(1, 1, 1) 
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bala_enemigo"):
+		vida_actual -= 1
+		_titilar_rojo()
+		area.queue_free()
+		_check_muerte_player()
+		
+func _check_muerte_player():
+	if vida_actual == 0:
+		print("player murio")
+		player_murio = true
+		sprite_nave.hide() 
+		sprite_explosion.show()
+		sprite_explosion.play("muerte")
+		await sprite_explosion.animation_finished	# Esperar que termine la animación antes de destruir
+
+func _game_over():
+	if player_murio:
+		pass

@@ -5,7 +5,8 @@ extends CharacterBody2D
 @export var fire_rate: float = 1.5   # Tiempo entre disparos
 @export var bala_enemigo: PackedScene   # Escena de bala exportada
 @onready var vida_local = Global.vida_enemigo1
-
+@onready var sprite_explosion = $AnimatedSprite2D
+@onready var sprite_nave = $SpaceShips001
 var movement_direction := 1 # 1 = derecha, -1 = izquierda
 var start_position_x: float # Para controlar el rango de movimiento
 
@@ -37,13 +38,23 @@ func _on_timer_disparo_timeout() -> void:
 	_shoot()
 
 
-func _on_area_damage_body_entered(body: Node2D) -> void:
-	if body.is_in_group("bala_player"):
-		vida_local -= 1
-		_check_muerte()
-		
 func _check_muerte():
 	if vida_local == 0:
-		queue_free()
+		sprite_nave.hide() 
+		sprite_explosion.show()
+		sprite_explosion.play("muerte")
 		Global._update_score(Global.puntaje_enemigo1)
-	
+		await sprite_explosion.animation_finished	# Esperar que termine la animación antes de destruir
+		queue_free()
+
+
+func _on_area_damage_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bala_player"):
+		vida_local -= 1
+		_titilar_rojo()
+		_check_muerte()
+		
+func _titilar_rojo():
+	sprite_nave.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.1).timeout
+	sprite_nave.modulate = Color(1, 1, 1) 
