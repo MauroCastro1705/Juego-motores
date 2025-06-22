@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ba15ok7ilb0gj"]
+[gd_scene load_steps=13 format=3 uid="uid://ba15ok7ilb0gj"]
 
 [ext_resource type="PackedScene" uid="uid://clmjuj1itk38j" path="res://enemigos/enemigo-1.tscn" id="1_iptt1"]
 [ext_resource type="Script" uid="uid://ca6v2rhk2ralj" path="res://niveles/nivel_1.gd" id="1_srq4w"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://tydtg2rtetc5" path="res://recursos/spawners/pickup_spawner.tscn" id="7_gyqaj"]
 [ext_resource type="PackedScene" uid="uid://dykovkbm6qgoe" path="res://UI/vidas.tscn" id="8_ktvln"]
 [ext_resource type="PackedScene" uid="uid://db8vadjwou13a" path="res://recursos/spawners/enemy_spawner.tscn" id="9_sdvcx"]
+[ext_resource type="PackedScene" uid="uid://bvsgr65jsx7pg" path="res://Menu/pausa.tscn" id="10_keqy6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvrp2"]
 size = Vector2(61, 891)
@@ -108,5 +109,7 @@ offset_bottom = 823.0
 
 [node name="EnemySpawner" parent="." instance=ExtResource("9_sdvcx")]
 position = Vector2(254, 69)
+
+[node name="Pausa" parent="." instance=ExtResource("10_keqy6")]
 
 [connection signal="area_entered" from="paredes/Area2D" to="." method="_on_area_2d_area_entered"]

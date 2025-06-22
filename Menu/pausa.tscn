@@ -1,0 +1,54 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvsgr65jsx7pg"]
+
+[ext_resource type="Script" uid="uid://cp7t0e3nsld8r" path="res://Menu/pausa.gd" id="1_64vt5"]
+
+[node name="Pausa" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_64vt5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.596603, 0.365226, 0.798919, 0.298039)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -33.0
+offset_right = 62.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Reiniciar" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reiniciar"
+
+[node name="Volver al Menu" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Volver al Menu"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_top = 315.0
+offset_right = 130.0
+offset_bottom = 354.0
+grow_horizontal = 2
+text = "Presiona \"Escape\" para resumir"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Reiniciar" to="." method="_on_reiniciar_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Volver al Menu" to="." method="_on_volver_al_menu_pressed"]
