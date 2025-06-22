@@ -40,16 +40,10 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Jugar"
 
-[node name="Rejugar" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "Rejugar"
-
 [node name="Salir" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Salir"
 
 [connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
-[connection signal="pressed" from="VBoxContainer/Rejugar" to="." method="_on_rejugar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]
