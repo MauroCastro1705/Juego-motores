@@ -34,7 +34,7 @@ func _instanciar_enemigo_aleatorio():
 	match numero:
 		1:_instanciar_enemigo(enemigo1)
 		2:_instanciar_enemigo(enemigo1)
-		3:_instanciar_enemigo(enemigo1)
+		3:_instanciar_enemigo(enemigo2)
 
 
 func _instanciar_enemigo(enemigo):

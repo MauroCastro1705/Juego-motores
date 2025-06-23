@@ -109,7 +109,7 @@ offset_right = 389.0
 offset_bottom = 823.0
 
 [node name="EnemySpawner" parent="." instance=ExtResource("9_sdvcx")]
-position = Vector2(254, 69)
+position = Vector2(223, 65)
 
 [node name="Pausa" parent="." instance=ExtResource("10_keqy6")]
 

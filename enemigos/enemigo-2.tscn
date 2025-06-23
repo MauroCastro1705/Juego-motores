@@ -1,7 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://gb6v2t3p5g53"]
+[gd_scene load_steps=19 format=3 uid="uid://gb6v2t3p5g53"]
 
 [ext_resource type="Texture2D" uid="uid://cuwuvum5wn352" path="res://Assets/Sprites/Ships/spaceShips_006.png" id="1_2epum"]
+[ext_resource type="Script" uid="uid://cknkdmuk2tbsa" path="res://enemigos/enemigo_2.gd" id="1_f4brw"]
 [ext_resource type="Shader" uid="uid://bg0q4811nvnfa" path="res://Shaders/escudo_energia.gdshader" id="2_unqa3"]
+[ext_resource type="PackedScene" uid="uid://bcphjfe43x6ek" path="res://enemigos/balas_enemigos/bala_enemigo_1.tscn" id="2_xvof4"]
+[ext_resource type="Texture2D" uid="uid://btd28fh336jgl" path="res://Assets/balas y explosiones/Explosion01_Frame_01_png_processed.png" id="4_xvof4"]
+[ext_resource type="Texture2D" uid="uid://bnrkl4o3khhgs" path="res://Assets/balas y explosiones/Explosion01_Frame_02_png_processed.png" id="5_f2gpd"]
+[ext_resource type="Texture2D" uid="uid://dvxqmkrogbe7x" path="res://Assets/balas y explosiones/Explosion01_Frame_03_png_processed.png" id="6_abymv"]
+[ext_resource type="Texture2D" uid="uid://b3a5lcqbbjwie" path="res://Assets/balas y explosiones/Explosion01_Frame_04_png_processed.png" id="7_a7wd6"]
+[ext_resource type="Texture2D" uid="uid://bm5axmmhng2um" path="res://Assets/balas y explosiones/Explosion01_Frame_05_png_processed.png" id="8_waxkk"]
+[ext_resource type="Texture2D" uid="uid://gp3wjkf4uxyh" path="res://Assets/balas y explosiones/Explosion01_Frame_06_png_processed.png" id="9_5dlyu"]
+[ext_resource type="Texture2D" uid="uid://duhj7b5e24aot" path="res://Assets/balas y explosiones/Explosion01_Frame_07_png_processed.png" id="10_npwha"]
+[ext_resource type="Texture2D" uid="uid://biflonoym5ird" path="res://Assets/balas y explosiones/Explosion01_Frame_08_png_processed.png" id="11_wkpm1"]
+[ext_resource type="Texture2D" uid="uid://bp6duhljkxgm" path="res://Assets/balas y explosiones/Explosion01_Frame_09_png_processed.png" id="12_b60ad"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6glxd"]
 radius = 14.0
@@ -15,7 +26,53 @@ shader = ExtResource("2_unqa3")
 shader_parameter/color = Color(0.784314, 0.14902, 0.2, 1)
 shader_parameter/oscilacion = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bvvoh"]
+radius = 22.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ale47"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xvof4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f2gpd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_abymv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a7wd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_waxkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5dlyu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_npwha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wkpm1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_b60ad")
+}],
+"loop": false,
+"name": &"muerte",
+"speed": 15.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
 [node name="Enemigo-2" type="CharacterBody2D"]
+script = ExtResource("1_f4brw")
+fire_rate = 1.0
+bala_enemigo = ExtResource("2_xvof4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
@@ -45,3 +102,19 @@ offset_left = -87.0
 offset_top = -87.0
 offset_right = 85.0
 offset_bottom = 85.0
+
+[node name="Timer_disparo" type="Timer" parent="."]
+
+[node name="area_damage" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_damage"]
+shape = SubResource("CircleShape2D_bvvoh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(2, -2)
+sprite_frames = SubResource("SpriteFrames_ale47")
+animation = &"new_animation"
+
+[connection signal="area_entered" from="escudo" to="." method="_on_escudo_area_entered"]
+[connection signal="timeout" from="Timer_disparo" to="." method="_on_timer_disparo_timeout"]
