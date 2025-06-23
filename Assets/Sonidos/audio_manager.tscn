@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://ssqup4qfiaum"]
+
+[ext_resource type="Script" uid="uid://lv3xlh3kofmg" path="res://audio_manager.gd" id="1_tp18a"]
+[ext_resource type="AudioStream" uid="uid://t8exdxrjn758" path="res://Assets/Sonidos/SFX/Laser_shoot 17.wav" id="2_7ud3j"]
+[ext_resource type="AudioStream" uid="uid://cfi7gldlueof6" path="res://Assets/Sonidos/SFX/movimientosfx.wav" id="2_tp18a"]
+[ext_resource type="AudioStream" uid="uid://dbdcc64j46wsf" path="res://Assets/Sonidos/SFX/Powerup 1.wav" id="4_durt8"]
+[ext_resource type="AudioStream" uid="uid://bmbtp2ly3r1qr" path="res://Assets/Sonidos/SFX/Explosion 14.wav" id="5_1u2sp"]
+[ext_resource type="AudioStream" uid="uid://c676rcufdy55q" path="res://Assets/Sonidos/SFX/Hit_hurt 34.wav" id="6_0n5ex"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_tp18a")
+
+[node name="DisparoAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_7ud3j")
+volume_db = -14.701
+attenuation = 0.0796603
+
+[node name="MovimientoAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_tp18a")
+volume_db = 5.333
+attenuation = 0.032352
+
+[node name="PowerupAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_durt8")
+volume_db = -10.667
+
+[node name="explosionEnemigo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_1u2sp")
+volume_db = -1.333
+
+[node name="HitEnemigo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_0n5ex")

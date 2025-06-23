@@ -44,6 +44,7 @@ func _check_muerte():
 		sprite_nave.hide() 
 		sprite_explosion.show()
 		sprite_explosion.play("muerte")
+		AudioManager.ExplosionEnemigo.play()
 		Global._update_score(Global.puntaje_enemigo1)
 		await sprite_explosion.animation_finished	# Esperar que termine la animación antes de destruir
 		queue_free()
@@ -51,6 +52,7 @@ func _check_muerte():
 
 func _on_area_damage_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bala_player"):
+		AudioManager.hitEnemigo.play()
 		vida_local -= 1
 		_titilar_rojo()
 		_check_muerte()

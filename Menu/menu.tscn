@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cf7hfdotqfat4"]
+[gd_scene load_steps=3 format=3 uid="uid://cf7hfdotqfat4"]
 
 [ext_resource type="Script" uid="uid://dbu5my7nq7jaq" path="res://Menu/menu.gd" id="1_rwxi6"]
+[ext_resource type="AudioStream" uid="uid://d3uteaeyexb1f" path="res://Assets/Sonidos/Musica/nave menu.wav" id="2_ihied"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -44,6 +45,10 @@ text = "Jugar"
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Salir"
+
+[node name="MusicaMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ihied")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

@@ -58,10 +58,14 @@ func _physics_process(delta):
 	
 func _handle_movement(input_vector, delta):
 	if input_vector != Vector2.ZERO:
-		# move_toward = interpola
+		if not AudioManager.MovimientoAudio.playing:
+			AudioManager.MovimientoAudio.play()
 		velocity = velocity.move_toward(input_vector * max_speed, aceleracion * delta)
 	else:
+		if AudioManager.MovimientoAudio.playing:
+			AudioManager.MovimientoAudio.stop()
 		velocity = velocity.move_toward(Vector2.ZERO, frenado * delta)
+
 
 ##DISPARO·····
 func _handle_disparar():
@@ -69,19 +73,26 @@ func _handle_disparar():
 		if not disparando:
 			disparando = true
 			fire_rate_timer.start()
+			
 	elif disparando:
 		disparando = false
 		fire_rate_timer.stop()
 
 func _on_fire_rate_timeout() -> void:
 	_disparar_balas()
+	AudioManager.disparoAudio.play()
+	
+	
 
 
 func _disparar_balas():
+	
 	var bala = bala_player.instantiate()
+	
 	var salida : Marker2D
 	if usar_cañon1:
 		salida = cañon1
+		
 	else:
 		salida = cañon2
 	bala.global_position = salida.global_position
@@ -136,6 +147,7 @@ func _handle_barra_escudo():
 ##PICK UPS·····
 
 func _regenerar_escudo_pickup():
+	AudioManager.PowerupAudio.play()
 	if not timer_escudo.is_stopped():
 		timer_escudo.stop()
 	call_deferred("_activar_escudo")
@@ -143,10 +155,13 @@ func _regenerar_escudo_pickup():
 
 func _regenerar_vida_pickup():
 	Global.player_actual_life  += 1
+	AudioManager.PowerupAudio.play()
 	#mostrar en pantalla la vida?
 	
 func _energy_pickup():
 	energy_timer.start()
+	AudioManager.PowerupAudio.play()
+
 	fire_rate_timer.wait_time = fire_rate_max_energy
 
 func _on_max_energy_timer_timeout() -> void:

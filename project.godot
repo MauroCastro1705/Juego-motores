@@ -12,13 +12,14 @@ config_version=5
 
 config/name="grupo-motores"
 config/tags=PackedStringArray("grupo", "motores")
-run/main_scene="uid://ba15ok7ilb0gj"
+run/main_scene="uid://cf7hfdotqfat4"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://dbfk4uqaslqrj"
 
 [autoload]
 
 Global="*res://recursos/scripts_globales/global.gd"
+AudioManager="*res://Assets/Sonidos/audio_manager.tscn"
 
 [display]
 
