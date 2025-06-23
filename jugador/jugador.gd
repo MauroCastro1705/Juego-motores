@@ -18,8 +18,8 @@ var usar_cañon1 := true
 var disparando := false
 @onready var energy_timer = $max_energy_timer
 
-var fire_rate_normal = 0.8
-var fire_rate_max_energy = 0.4
+var fire_rate_normal = 0.4
+var fire_rate_max_energy = 0.2
 
 #max energy mode
 @onready var max_energy_bar = $max_energy_bar
@@ -43,6 +43,7 @@ func _ready() -> void:
 	max_energy_bar.visible = false
 	max_energy_label.visible = false
 	Global.player_actual_life = Global.player_max_life
+	sprite_explosion.visible = false
 	
 
 func _physics_process(delta):
@@ -73,7 +74,7 @@ func _handle_disparar():
 		if not disparando:
 			disparando = true
 			fire_rate_timer.start()
-			
+			_disparar_balas()
 	elif disparando:
 		disparando = false
 		fire_rate_timer.stop()
@@ -81,12 +82,8 @@ func _handle_disparar():
 func _on_fire_rate_timeout() -> void:
 	_disparar_balas()
 	AudioManager.disparoAudio.play()
-	
-	
-
 
 func _disparar_balas():
-	
 	var bala = bala_player.instantiate()
 	
 	var salida : Marker2D
@@ -97,6 +94,7 @@ func _disparar_balas():
 		salida = cañon2
 	bala.global_position = salida.global_position
 	get_tree().current_scene.add_child(bala)
+	AudioManager.disparoAudio.play()
 	# Cambiar para el siguiente disparo
 	usar_cañon1 = not usar_cañon1
 
