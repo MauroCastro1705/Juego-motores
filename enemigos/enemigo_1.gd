@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var move_speed: float = 100.0
-@export var move_range: float = 200.0   # Rango de movimiento de lado a lado
+@export var move_range: float = 100.0   # Rango de movimiento de lado a lado
 @export var fire_rate: float = 1.5   # Tiempo entre disparos
 @export var bala_enemigo: PackedScene   # Escena de bala exportada
 @onready var vida_local = Global.vida_enemigo1
@@ -14,6 +14,9 @@ func _ready():
 	start_position_x = global_position.x
 	$Timer_disparo.wait_time = fire_rate
 	$Timer_disparo.start()
+	_randomizar()
+	
+
 
 func _physics_process(_delta):
 	# Movimiento lateral
@@ -21,6 +24,13 @@ func _physics_process(_delta):
 	velocity = movement
 	move_and_slide()
 	_calcular_distancia()
+
+func _randomizar():
+	move_speed += randf_range(-10, 10)
+	if randf() < 0.5:
+		movement_direction = -1
+	else:
+		movement_direction = 1
 
 func _calcular_distancia():
 	# Cambiar dirección si llega al límite del rango
