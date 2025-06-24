@@ -12,7 +12,12 @@ func _ready() -> void:
 	Global.current_enemy_on_screen = 0
 
 func _on_spawn_timer_timeout() -> void:
-	_instanciar_enemigo_aleatorio()
+	if Global.current_enemy_on_screen == 0:
+		# Fuerza al menos un enemigo si no hay ninguno en pantalla
+		_instanciar_enemigo(enemigo1, true)
+	else:
+		_instanciar_enemigo_aleatorio()
+	
 	spawn_timer.start()
 	print("cantidad de enemigos ", Global.current_enemy_on_screen)
 
@@ -42,11 +47,11 @@ func _instanciar_jefe():#si se cumple la condicion, se spawnea el jefe
 	if Global.player_score > 50:
 		_instanciar_enemigo(enemigo2)
 
-func _instanciar_enemigo(enemigo):
-	if Global.current_enemy_on_screen < Global.max_enemy1_on_screen :
+func _instanciar_enemigo(enemigo: PackedScene, forzar: bool = false):
+	if Global.current_enemy_on_screen < Global.max_enemy1_on_screen or forzar:
 		var nuevo_enemigo = enemigo.instantiate()
 		nuevo_enemigo.global_position = _posicion_aleatoria_en_area()
 		get_tree().current_scene.add_child(nuevo_enemigo)
 		Global.current_enemy_on_screen += 1
 	else:
-		print("maxima cant de enemigos")
+		print("máxima cantidad de enemigos")

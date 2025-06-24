@@ -1,0 +1,156 @@
+[gd_scene load_steps=11 format=3 uid="uid://g1kv4fai4qiu"]
+
+[ext_resource type="Script" uid="uid://q0tjwyrofgtn" path="res://Menu/controles.gd" id="1_ije4l"]
+[ext_resource type="Texture2D" uid="uid://dxp7b6gsj734j" path="res://Assets/Godot-SplashScreens-main/Screen/Reimagined logo/button-dark.png" id="2_ije4l"]
+[ext_resource type="FontFile" uid="uid://b6tlguvuo0bes" path="res://Assets/Fonts e Imagenes/PressStart2P.ttf" id="3_srab7"]
+[ext_resource type="AudioStream" uid="uid://d3uteaeyexb1f" path="res://Assets/Sonidos/Musica/nave menu.wav" id="4_ije4l"]
+[ext_resource type="Texture2D" uid="uid://bev1je4bt6bgx" path="res://Assets/Keyboard & Mouse/Double/keyboard_space.png" id="5_3yv0s"]
+[ext_resource type="Texture2D" uid="uid://ctci41v4ithfi" path="res://Assets/Keyboard & Mouse/Double/keyboard_s.png" id="6_8psng"]
+[ext_resource type="Texture2D" uid="uid://cw2dtlk0f2av1" path="res://Assets/Keyboard & Mouse/Double/keyboard_w.png" id="7_pbm5m"]
+[ext_resource type="Texture2D" uid="uid://l8ii0bo455h7" path="res://Assets/Keyboard & Mouse/Double/keyboard_d.png" id="8_wexoh"]
+[ext_resource type="Texture2D" uid="uid://cb17cxv5r74iw" path="res://Assets/Keyboard & Mouse/Double/keyboard_a.png" id="9_52nn3"]
+
+[sub_resource type="FontVariation" id="FontVariation_ije4l"]
+base_font = ExtResource("3_srab7")
+
+[node name="Controles" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ije4l")
+metadata/_edit_lock_ = true
+
+[node name="Button-dark" type="Sprite2D" parent="."]
+position = Vector2(875, 487)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ije4l")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 25.0
+offset_right = 2820.0
+offset_bottom = 345.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_srab7")
+theme_override_font_sizes/font_size = 300
+text = "Controles"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 157.0
+offset_right = 2881.0
+offset_bottom = 477.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_srab7")
+theme_override_font_sizes/font_size = 200
+text = "Avanzar"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 252.0
+offset_right = 2881.0
+offset_bottom = 572.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_srab7")
+theme_override_font_sizes/font_size = 200
+text = "Retroceder"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 419.0
+offset_right = 3864.0
+offset_bottom = 739.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_srab7")
+theme_override_font_sizes/font_size = 200
+text = "Izquierda y derecha"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 534.0
+offset_right = 3994.0
+offset_bottom = 854.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_srab7")
+theme_override_font_sizes/font_size = 200
+text = "Disparar
+"
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 582.0
+offset_right = 3910.0
+offset_bottom = 1038.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_srab7")
+theme_override_font_sizes/font_size = 150
+text = "(mantene para
+disparo continuo)
+"
+
+[node name="MusicaMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ije4l")
+autoplay = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = -103.0
+offset_right = 234.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="Volver" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_ije4l")
+theme_override_font_sizes/font_size = 37
+text = "Volver"
+
+[node name="KeyboardSpace" type="Sprite2D" parent="."]
+position = Vector2(110, 545)
+texture = ExtResource("5_3yv0s")
+
+[node name="KeyboardS" type="Sprite2D" parent="."]
+position = Vector2(103, 266)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("6_8psng")
+
+[node name="KeyboardW" type="Sprite2D" parent="."]
+position = Vector2(104, 173)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_pbm5m")
+
+[node name="KeyboardD" type="Sprite2D" parent="."]
+position = Vector2(206.4, 375.4)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("8_wexoh")
+
+[node name="KeyboardA" type="Sprite2D" parent="."]
+position = Vector2(295.4, 375.4)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_52nn3")
+
+[connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]

@@ -12,8 +12,9 @@ config_version=5
 
 config/name="grupo-motores"
 config/tags=PackedStringArray("grupo", "motores")
-run/main_scene="uid://cf7hfdotqfat4"
+run/main_scene="uid://b2plca84x4mxk"
 config/features=PackedStringArray("4.4", "Forward Plus")
+boot_splash/show_image=false
 config/icon="uid://dbfk4uqaslqrj"
 
 [autoload]

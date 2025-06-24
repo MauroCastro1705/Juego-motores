@@ -40,10 +40,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -129.0
-offset_top = -340.0
-offset_right = 129.0
-offset_bottom = -174.0
+offset_left = -229.0
+offset_top = -349.0
+offset_right = 229.0
+offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 50
@@ -53,6 +53,12 @@ layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_8w4re")
 theme_override_font_sizes/font_size = 50
 text = "Jugar"
+
+[node name="controles" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_8w4re")
+theme_override_font_sizes/font_size = 50
+text = "controles"
 
 [node name="Salir" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -65,4 +71,5 @@ stream = ExtResource("2_ihied")
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/controles" to="." method="_on_controles_pressed"]
 [connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]
