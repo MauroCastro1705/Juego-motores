@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var move_speed: float = 100.0
+@export var move_speed: float = 95.0
 @export var move_range: float = 100.0   # Rango de movimiento de lado a lado
 @export var fire_rate: float = 1.5   # Tiempo entre disparos
 @export var bala_enemigo: PackedScene   # Escena de bala exportada

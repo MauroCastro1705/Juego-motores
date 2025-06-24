@@ -89,14 +89,12 @@ func _disparar_balas():
 	var salida : Marker2D
 	if usar_cañon1:
 		salida = cañon1
-		
 	else:
 		salida = cañon2
 	bala.global_position = salida.global_position
 	get_tree().current_scene.add_child(bala)
 	AudioManager.disparoAudio.play()
-	# Cambiar para el siguiente disparo
-	usar_cañon1 = not usar_cañon1
+	usar_cañon1 = not usar_cañon1 # Cambiar para el siguiente disparo
 
 ##ESCUDO·····
 func _on_timer_timeout() -> void:

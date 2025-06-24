@@ -2,17 +2,17 @@ extends CharacterBody2D
 
 @export var move_speed: float = 100.0
 @export var move_range: float = 100.0   # Rango de movimiento de lado a lado
-@export var fire_rate: float = 1.5   # Tiempo entre disparos
+@export var fire_rate: float = 1.5   
 @export var bala_enemigo: PackedScene   # Escena de bala exportada
 @onready var vida_local = Global.vida_enemigo1
 @onready var sprite_explosion = $AnimatedSprite2D
 @onready var sprite_nave = $SpaceShips006
 var movement_direction := 1 # 1 = derecha, -1 = izquierda
-var start_position_x: float # Para controlar el rango de movimiento
+var start_position_x: float 
 @export var zigzag_amplitud := 50.0     # qué tan ancho es el zigzag
-@export var zigzag_frecuencia := 2.0    # qué tan rápido oscila
+@export var zigzag_frecuencia := 2.0    
 @onready var escudo = $escudo
-@export var move_speed_y := 50.0 
+@export var move_speed_y := 20.0 
 var tiempo := 0.0
 
 
@@ -22,20 +22,15 @@ func _ready():
 	$Timer_disparo.wait_time = fire_rate
 	$Timer_disparo.start()
 	_randomizar()
-	
+	escudo.monitoring = true
 
 
 func _physics_process(delta):
 	tiempo += delta
-	
-	# Movimiento en zigzag (X)
-	var offset_x = sin(tiempo * zigzag_frecuencia) * zigzag_amplitud
+	var offset_x = sin(tiempo * zigzag_frecuencia) * zigzag_amplitud# Movimiento en zigzag (X)
 	var pos_x = start_position_x + offset_x
 	
-	# Movimiento descendente (Y)
-	var pos_y = global_position.y + move_speed_y * delta
-
-	# Aplicar posición final
+	var pos_y = global_position.y + move_speed_y * delta# desciende en Y
 	global_position = Vector2(pos_x, pos_y)
 
 func _randomizar():
@@ -63,7 +58,7 @@ func _check_muerte():
 		sprite_explosion.show()
 		sprite_explosion.play("muerte")
 		AudioManager.ExplosionEnemigo.play()
-		Global._update_score(Global.puntaje_enemigo1)
+		Global._update_score(Global.puntaje_enemigo2) #emitimos puntaje nuevo
 		await sprite_explosion.animation_finished	# Esperar que termine la animación antes de destruir
 		queue_free()
 
@@ -84,8 +79,9 @@ func _titilar_rojo():
 func _on_escudo_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bala_player"):
 		area.queue_free()
-		desactivar_escudo()
+		call_deferred("desactivar_escudo")
 		
 func desactivar_escudo():
 	escudo.visible = false
-	escudo.disable_mode = true
+	escudo.monitoring = false
+	$escudo/CollisionShape2D.disabled = true

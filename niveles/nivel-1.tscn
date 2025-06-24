@@ -96,17 +96,17 @@ offset_bottom = 40.0
 
 [node name="Score" parent="UI" instance=ExtResource("5_ov6m4")]
 layout_mode = 1
-offset_left = 180.0
-offset_top = 815.0
-offset_right = 180.0
-offset_bottom = 815.0
+offset_left = 11.0
+offset_top = 821.0
+offset_right = 11.0
+offset_bottom = 821.0
 
 [node name="Vidas" parent="UI" instance=ExtResource("8_ktvln")]
 layout_mode = 1
-offset_left = 389.0
-offset_top = 823.0
-offset_right = 389.0
-offset_bottom = 823.0
+offset_left = 387.0
+offset_top = 826.0
+offset_right = 387.0
+offset_bottom = 826.0
 
 [node name="EnemySpawner" parent="." instance=ExtResource("9_sdvcx")]
 position = Vector2(223, 65)

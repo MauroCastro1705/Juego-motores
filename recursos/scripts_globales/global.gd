@@ -20,6 +20,8 @@ var max_enemy1_on_screen:int = 4
 var current_enemy_on_screen:int  = 0
 
 
+var puntaje_enemigo2:int = 30
+
 func _update_score(new_score):
 	var a = player_score
 	var b = new_score

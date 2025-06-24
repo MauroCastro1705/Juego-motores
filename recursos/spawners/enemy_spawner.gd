@@ -29,13 +29,18 @@ func _posicion_aleatoria_en_area() -> Vector2:
 
 
 func _instanciar_enemigo_aleatorio():
-	var numero = randi_range(1, 3)
+	var numero = randi_range(1, 3) #numero aleatorio para enemigos
+
 
 	match numero:
 		1:_instanciar_enemigo(enemigo1)
 		2:_instanciar_enemigo(enemigo1)
-		3:_instanciar_enemigo(enemigo2)
+		3:_instanciar_jefe()
 
+
+func _instanciar_jefe():#si se cumple la condicion, se spawnea el jefe
+	if Global.player_score > 50:
+		_instanciar_enemigo(enemigo2)
 
 func _instanciar_enemigo(enemigo):
 	if Global.current_enemy_on_screen < Global.max_enemy1_on_screen :
