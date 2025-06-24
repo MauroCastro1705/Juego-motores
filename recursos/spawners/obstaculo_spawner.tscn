@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt4gtpt1ftc04"]
+
+[ext_resource type="Script" uid="uid://xpvmeyvqasur" path="res://recursos/spawners/obstaculo_spawner.gd" id="1_dj117"]
+[ext_resource type="PackedScene" uid="uid://beci6n7u7rygv" path="res://recursos/obstaculos/asteroide-1.tscn" id="2_y3xt3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xaha"]
+size = Vector2(377, 114)
+
+[node name="obstaculo_spawner" type="Node2D"]
+script = ExtResource("1_dj117")
+obstaculo1 = ExtResource("2_y3xt3")
+
+[node name="spawn_timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_2xaha")
+debug_color = Color(0.69789, 0.492707, 0.0602699, 0.42)
+
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]

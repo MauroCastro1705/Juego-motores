@@ -22,6 +22,11 @@ var current_enemy_on_screen:int  = 0
 
 var puntaje_enemigo2:int = 30
 
+#asteroides
+var max_asteroides_on_screen:int = 3
+var asteroides_actuales_on_screen:int = 0
+
+
 func _update_score(new_score):
 	var a = player_score
 	var b = new_score

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ba15ok7ilb0gj"]
+[gd_scene load_steps=15 format=3 uid="uid://ba15ok7ilb0gj"]
 
 [ext_resource type="PackedScene" uid="uid://clmjuj1itk38j" path="res://enemigos/enemigo-1.tscn" id="1_iptt1"]
 [ext_resource type="Script" uid="uid://ca6v2rhk2ralj" path="res://niveles/nivel_1.gd" id="1_srq4w"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://db8vadjwou13a" path="res://recursos/spawners/enemy_spawner.tscn" id="9_sdvcx"]
 [ext_resource type="PackedScene" uid="uid://bvsgr65jsx7pg" path="res://Menu/pausa.tscn" id="10_keqy6"]
 [ext_resource type="AudioStream" uid="uid://wqi553ur68q3" path="res://Assets/Sonidos/Musica/nave musica.wav" id="11_ctyu4"]
+[ext_resource type="PackedScene" uid="uid://dt4gtpt1ftc04" path="res://recursos/spawners/obstaculo_spawner.tscn" id="12_w6myn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tvrp2"]
 size = Vector2(61, 891)
@@ -85,9 +86,6 @@ position = Vector2(237, 743)
 [node name="Asteroide-1" parent="." instance=ExtResource("3_tvrp2")]
 position = Vector2(58, 277)
 
-[node name="PickupSpawner" parent="." instance=ExtResource("7_gyqaj")]
-position = Vector2(252, 542)
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -108,8 +106,14 @@ offset_top = 826.0
 offset_right = 387.0
 offset_bottom = 826.0
 
+[node name="obstaculo_spawner" parent="." instance=ExtResource("12_w6myn")]
+position = Vector2(259, 283)
+
 [node name="EnemySpawner" parent="." instance=ExtResource("9_sdvcx")]
 position = Vector2(223, 65)
+
+[node name="PickupSpawner" parent="." instance=ExtResource("7_gyqaj")]
+position = Vector2(252, 542)
 
 [node name="Pausa" parent="." instance=ExtResource("10_keqy6")]
 
