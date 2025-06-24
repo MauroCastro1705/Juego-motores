@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://gb6v2t3p5g53" path="res://enemigos/enemigo-2.tscn" id="3_1d02s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xaha"]
-size = Vector2(377, 114)
+size = Vector2(248, 114)
 
 [node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_spch2")
@@ -18,7 +18,7 @@ wait_time = 10.0
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(25.5, 0)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_2xaha")
 debug_color = Color(0.956106, 8.66354e-07, 0.539692, 0.42)
 

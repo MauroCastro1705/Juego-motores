@@ -8,8 +8,13 @@ func _ready() -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	_borrar_balas(area)
+	check_obj(area)
 		
-func _borrar_balas(area):
-	if area.is_in_group("bala_enemigo") or area.is_in_group("bala_player") or area.is_in_group("obstaculo") or area.is_in_group("pick-up"):
+
+func check_obj(area):
+	if area.is_in_group("bala_enemigo") or area.is_in_group("bala_player"):
+		area.queue_free()
+	if area.is_in_group("obstaculo"):
+		area.asteroide_sale_area()
+	if area.is_in_group("pick-up"):
 		area.queue_free()

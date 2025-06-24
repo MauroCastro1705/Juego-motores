@@ -39,3 +39,10 @@ func explosion_asteroide():
 	AudioManager.ExplosionEnemigo.play()
 	await explosion.animation_finished	# Esperar que termine la animación antes de destruir
 	queue_free()
+
+func asteroide_sale_area():
+	print(" asteroide sale")
+	Global.asteroides_actuales_on_screen -= 1
+	asteroide.visible = false 
+	explosion.visible = true
+	queue_free()
