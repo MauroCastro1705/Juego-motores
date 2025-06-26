@@ -60,6 +60,7 @@ func _check_muerte():
 		AudioManager.ExplosionEnemigo.play()
 		Global._update_score(Global.puntaje_enemigo2) #emitimos puntaje nuevo
 		await sprite_explosion.animation_finished	# Esperar que termine la animación antes de destruir
+		Global.player_gano = true
 		queue_free()
 
 

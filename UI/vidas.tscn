@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dykovkbm6qgoe"]
+[gd_scene load_steps=4 format=3 uid="uid://dykovkbm6qgoe"]
 
 [ext_resource type="Script" uid="uid://dl1ehu06c1sec" path="res://UI/vidas.gd" id="1_34721"]
 [ext_resource type="FontFile" uid="uid://b6tlguvuo0bes" path="res://Assets/Fonts e Imagenes/PressStart2P.ttf" id="2_415u4"]
+[ext_resource type="LabelSettings" uid="uid://gq3gqfvvcn04" path="res://recursos/nice_label_simple.tres" id="3_t1gde"]
 
 [node name="Vidas" type="Control"]
 layout_mode = 3
@@ -18,8 +19,8 @@ offset_right = 40.0
 offset_bottom = 23.0
 scale = Vector2(0.2, 0.2)
 theme_override_fonts/font = ExtResource("2_415u4")
-theme_override_font_sizes/font_size = 62
 text = "Vidas :"
+label_settings = ExtResource("3_t1gde")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
@@ -28,4 +29,4 @@ offset_right = 250.0
 offset_bottom = 86.0
 scale = Vector2(0.2, 0.2)
 theme_override_fonts/font = ExtResource("2_415u4")
-theme_override_font_sizes/font_size = 62
+label_settings = ExtResource("3_t1gde")

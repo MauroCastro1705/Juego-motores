@@ -12,6 +12,7 @@ var velocidad_bala_player:float = 310.0
 var player_actual_life:int
 var player_max_life:int = 3
 var player_murio:bool = false
+var player_gano:bool = false
 
 #enemy varaibles
 var vida_enemigo1:int = 3

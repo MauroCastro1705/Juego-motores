@@ -59,6 +59,7 @@ func _physics_process(delta):
 	_handle_barra_escudo()
 	_handle_max_energy()
 	_game_over()
+	_game_win()
 	
 func _handle_movement(input_vector, delta):
 	if input_vector != Vector2.ZERO:
@@ -205,3 +206,7 @@ func _check_muerte_player():
 func _game_over():
 	if Global.player_murio:
 		get_tree().change_scene_to_file("res://Menu/game_over.tscn")
+
+func 	_game_win():
+	if Global.player_gano:
+		get_tree().change_scene_to_file("res://Menu/victoria.tscn")

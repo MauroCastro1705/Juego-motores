@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dh63o5ebcdiet"]
+[gd_scene load_steps=4 format=3 uid="uid://dh63o5ebcdiet"]
 
 [ext_resource type="Script" uid="uid://ygmbap6ug4eb" path="res://UI/score.gd" id="1_4t7g4"]
 [ext_resource type="FontFile" uid="uid://b6tlguvuo0bes" path="res://Assets/Fonts e Imagenes/PressStart2P.ttf" id="2_4vygk"]
+[ext_resource type="LabelSettings" uid="uid://gq3gqfvvcn04" path="res://recursos/nice_label_simple.tres" id="3_3sv4v"]
 
 [node name="Score" type="Control"]
 layout_mode = 3
@@ -14,14 +15,15 @@ script = ExtResource("1_4t7g4")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 124.0
-offset_top = 3.0
-offset_right = 604.0
-offset_bottom = 83.0
+offset_left = 123.0
+offset_top = 1.0
+offset_right = 603.0
+offset_bottom = 81.0
 scale = Vector2(0.2, 0.2)
 theme_override_fonts/font = ExtResource("2_4vygk")
 theme_override_font_sizes/font_size = 80
 text = "Score?"
+label_settings = ExtResource("3_3sv4v")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
@@ -33,3 +35,4 @@ scale = Vector2(0.2, 0.2)
 theme_override_fonts/font = ExtResource("2_4vygk")
 theme_override_font_sizes/font_size = 80
 text = "Score :"
+label_settings = ExtResource("3_3sv4v")
