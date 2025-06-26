@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cv6kde4aitirv"]
+
+[ext_resource type="Shader" uid="uid://c7w1gpmebdo3c" path="res://Shaders/radial_shine.gdshader" id="1_7km1e"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7km1e"]
+seamless = true
+seamless_blend_skirt = 0.275
+
+[resource]
+shader = ExtResource("1_7km1e")
+shader_parameter/shine_num = 8.0
+shader_parameter/rotation_speed = 2.0
+shader_parameter/light_magnitude = 0.5
+shader_parameter/filter_distence = 1.0
+shader_parameter/filter_magnitude = 1.0
+shader_parameter/filter_minv = 0.341
+shader_parameter/cut_inner_radius = 0.0
+shader_parameter/color = Color(0.972549, 0.858824, 0.337255, 1)
+shader_parameter/NOISE = SubResource("NoiseTexture2D_7km1e")
+shader_parameter/NOISE_speed = Vector2(0, 0)
+shader_parameter/NOISE_magnitude = 0.0

@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=3 uid="uid://5ccwsbfolk7e"]
+
+[ext_resource type="Script" uid="uid://coo6pg34rsr4k" path="res://Menu/victoria.gd" id="1_meynf"]
+[ext_resource type="Texture2D" uid="uid://dxp7b6gsj734j" path="res://Assets/Godot-SplashScreens-main/Screen/Reimagined logo/button-dark.png" id="2_pvi3r"]
+[ext_resource type="FontFile" uid="uid://b6tlguvuo0bes" path="res://Assets/Fonts e Imagenes/PressStart2P.ttf" id="3_8v5dn"]
+[ext_resource type="Material" uid="uid://cv6kde4aitirv" path="res://Shaders/radial_shine.tres" id="3_pvi3r"]
+[ext_resource type="LabelSettings" uid="uid://idwpytuuuygr" path="res://recursos/nice_label.tres" id="4_lrvpx"]
+[ext_resource type="AudioStream" uid="uid://d3uteaeyexb1f" path="res://Assets/Sonidos/Musica/nave menu.wav" id="5_pp5k0"]
+
+[sub_resource type="FontVariation" id="FontVariation_ije4l"]
+base_font = ExtResource("3_8v5dn")
+
+[node name="victoria" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_meynf")
+metadata/_edit_lock_ = true
+
+[node name="Button-dark" type="Sprite2D" parent="."]
+position = Vector2(875, 487)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_pvi3r")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("3_pvi3r")
+layout_mode = 0
+offset_left = -119.0
+offset_top = -10.0
+offset_right = 626.0
+offset_bottom = 735.0
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 126.0
+offset_top = 346.0
+offset_right = 2826.0
+offset_bottom = 666.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8v5dn")
+theme_override_font_sizes/font_size = 300
+text = "Ganaste!!"
+label_settings = ExtResource("4_lrvpx")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 492.0
+offset_right = 2231.0
+offset_bottom = 812.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8v5dn")
+theme_override_font_sizes/font_size = 200
+text = "tu puntaje:"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 576.0
+offset_right = 2231.0
+offset_bottom = 896.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8v5dn")
+theme_override_font_sizes/font_size = 200
+text = "High Score:"
+
+[node name="puntaje_alto" type="Label" parent="."]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 569.0
+offset_right = 3260.0
+offset_bottom = 889.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8v5dn")
+theme_override_font_sizes/font_size = 200
+text = "High Score"
+label_settings = ExtResource("4_lrvpx")
+
+[node name="puntaje" type="Label" parent="."]
+layout_mode = 0
+offset_left = 262.0
+offset_top = 481.0
+offset_right = 2362.0
+offset_bottom = 801.0
+scale = Vector2(0.1, 0.1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_8v5dn")
+theme_override_font_sizes/font_size = 200
+text = "puntaje"
+label_settings = ExtResource("4_lrvpx")
+
+[node name="MusicaMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_pp5k0")
+autoplay = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -226.0
+offset_top = -166.0
+offset_right = 232.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="Volver" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_ije4l")
+theme_override_font_sizes/font_size = 31
+text = "Volver al menu"
+
+[connection signal="pressed" from="VBoxContainer/Volver" to="." method="_on_volver_pressed"]
