@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://cogoxtxt25e1a"]
+[gd_scene load_steps=23 format=3 uid="uid://cogoxtxt25e1a"]
 
 [ext_resource type="Script" uid="uid://cdototyscoliu" path="res://jugador/jugador.gd" id="1_5vouv"]
 [ext_resource type="Texture2D" uid="uid://dbfk4uqaslqrj" path="res://Assets/Sprites/player_ship.png" id="2_5vouv"]
 [ext_resource type="PackedScene" uid="uid://bd5in6gsfu1qe" path="res://jugador/bala_player_1.tscn" id="2_im34r"]
 [ext_resource type="Material" uid="uid://eq6vn7angv0h" path="res://Shaders/escudo_energia.tres" id="3_im34r"]
+[ext_resource type="Material" uid="uid://y5k0cs73sc7p" path="res://Shaders/rocket.tres" id="3_mk724"]
 [ext_resource type="Texture2D" uid="uid://btd28fh336jgl" path="res://Assets/balas y explosiones/Explosion01_Frame_01_png_processed.png" id="5_slyet"]
 [ext_resource type="Texture2D" uid="uid://bnrkl4o3khhgs" path="res://Assets/balas y explosiones/Explosion01_Frame_02_png_processed.png" id="6_mk724"]
 [ext_resource type="Texture2D" uid="uid://dvxqmkrogbe7x" path="res://Assets/balas y explosiones/Explosion01_Frame_03_png_processed.png" id="7_vmphg"]
@@ -75,6 +76,14 @@ animations = [{
 rotation = -3.13306
 script = ExtResource("1_5vouv")
 bala_player = ExtResource("2_im34r")
+
+[node name="flama" type="ColorRect" parent="."]
+material = ExtResource("3_mk724")
+offset_left = 6.95708
+offset_top = -5.05955
+offset_right = 21.9571
+offset_bottom = 191.94
+rotation = 3.14159
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dapwa")

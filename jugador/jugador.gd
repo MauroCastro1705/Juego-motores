@@ -35,6 +35,9 @@ var se_desactivo_el_escudo:bool = false
 #bala
 @export var bala_player:PackedScene
 
+@onready var flama_shader = $flama.material as ShaderMaterial
+
+
 func _ready() -> void:
 	_set_barra_escudo()
 	se_desactivo_el_escudo = false
@@ -62,10 +65,12 @@ func _handle_movement(input_vector, delta):
 		if not AudioManager.MovimientoAudio.playing:
 			AudioManager.MovimientoAudio.play()
 		velocity = velocity.move_toward(input_vector * max_speed, aceleracion * delta)
+		flama_shader.set_shader_parameter("flame_height", 1.1)
 	else:
 		if AudioManager.MovimientoAudio.playing:
 			AudioManager.MovimientoAudio.stop()
 		velocity = velocity.move_toward(Vector2.ZERO, frenado * delta)
+		flama_shader.set_shader_parameter("flame_height", 0.9)
 
 
 ##DISPARO·····

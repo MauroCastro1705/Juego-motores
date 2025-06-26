@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://y5k0cs73sc7p"]
+
+[ext_resource type="Shader" uid="uid://2xf2xfesgews" path="res://Shaders/rocket.gdshader" id="1_1uoud"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1uoud"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j7lf5"]
+
+[resource]
+shader = ExtResource("1_1uoud")
+shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_1uoud")
+shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_j7lf5")
+shader_parameter/yellow_color = Color(0.135072, 0.802407, 0.749249, 1)
+shader_parameter/orange_color = Color(0.0476472, 0.166212, 0.994006, 1)
+shader_parameter/smoke_color = Color(0.342955, 0.599263, 0.812156, 1)
+shader_parameter/effect_speed = 1.0
+shader_parameter/flame_height = 1.1

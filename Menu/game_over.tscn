@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b613cke14yxi7"]
+[gd_scene load_steps=7 format=3 uid="uid://b613cke14yxi7"]
 
 [ext_resource type="Script" uid="uid://cbsmk4os0pqtt" path="res://Menu/game_over.gd" id="1_ufjji"]
 [ext_resource type="Texture2D" uid="uid://dxp7b6gsj734j" path="res://Assets/Godot-SplashScreens-main/Screen/Reimagined logo/button-dark.png" id="2_xi8el"]
 [ext_resource type="FontFile" uid="uid://b6tlguvuo0bes" path="res://Assets/Fonts e Imagenes/PressStart2P.ttf" id="3_yxs1p"]
+[ext_resource type="LabelSettings" uid="uid://idwpytuuuygr" path="res://recursos/nice_label.tres" id="4_6icbg"]
 [ext_resource type="AudioStream" uid="uid://d3uteaeyexb1f" path="res://Assets/Sonidos/Musica/nave menu.wav" id="4_grku0"]
 
 [sub_resource type="FontVariation" id="FontVariation_ije4l"]
@@ -35,6 +36,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_yxs1p")
 theme_override_font_sizes/font_size = 300
 text = "Game Over"
+label_settings = ExtResource("4_6icbg")
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
@@ -63,26 +65,28 @@ text = "High Score:"
 [node name="puntaje_alto" type="Label" parent="."]
 layout_mode = 0
 offset_left = 260.0
-offset_top = 285.0
-offset_right = 2300.0
-offset_bottom = 605.0
+offset_top = 280.0
+offset_right = 3260.0
+offset_bottom = 600.0
 scale = Vector2(0.1, 0.1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_yxs1p")
 theme_override_font_sizes/font_size = 200
 text = "High Score"
+label_settings = ExtResource("4_6icbg")
 
 [node name="puntaje" type="Label" parent="."]
 layout_mode = 0
 offset_left = 262.0
-offset_top = 202.0
-offset_right = 2302.0
-offset_bottom = 522.0
+offset_top = 192.0
+offset_right = 2362.0
+offset_bottom = 512.0
 scale = Vector2(0.1, 0.1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_yxs1p")
 theme_override_font_sizes/font_size = 200
 text = "puntaje"
+label_settings = ExtResource("4_6icbg")
 
 [node name="MusicaMenu" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_grku0")
