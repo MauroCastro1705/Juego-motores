@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b613cke14yxi7"]
+[gd_scene load_steps=8 format=3 uid="uid://b613cke14yxi7"]
 
 [ext_resource type="Script" uid="uid://cbsmk4os0pqtt" path="res://Menu/game_over.gd" id="1_ufjji"]
 [ext_resource type="Texture2D" uid="uid://dxp7b6gsj734j" path="res://Assets/Godot-SplashScreens-main/Screen/Reimagined logo/button-dark.png" id="2_xi8el"]
+[ext_resource type="Material" uid="uid://cv6kde4aitirv" path="res://Shaders/radial_shine.tres" id="3_q7pgj"]
 [ext_resource type="FontFile" uid="uid://b6tlguvuo0bes" path="res://Assets/Fonts e Imagenes/PressStart2P.ttf" id="3_yxs1p"]
 [ext_resource type="LabelSettings" uid="uid://idwpytuuuygr" path="res://recursos/nice_label.tres" id="4_6icbg"]
 [ext_resource type="AudioStream" uid="uid://d3uteaeyexb1f" path="res://Assets/Sonidos/Musica/nave menu.wav" id="4_grku0"]
@@ -23,6 +24,14 @@ metadata/_edit_lock_ = true
 position = Vector2(875, 487)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_xi8el")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("3_q7pgj")
+offset_left = -119.0
+offset_top = -10.0
+offset_right = 626.0
+offset_bottom = 735.0
 metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="."]

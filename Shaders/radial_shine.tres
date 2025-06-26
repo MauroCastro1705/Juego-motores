@@ -1,21 +1,60 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cv6kde4aitirv"]
 
-[ext_resource type="Shader" uid="uid://c7w1gpmebdo3c" path="res://Shaders/radial_shine.gdshader" id="1_7km1e"]
+[sub_resource type="Shader" id="Shader_vc2so"]
+code = "shader_type canvas_item;
+
+uniform float shine_num = 8;
+uniform float rotation_speed = 3;
+uniform float light_magnitude = 2;
+
+uniform float filter_distence: hint_range(0, 1) = 1.0;
+uniform float filter_magnitude: hint_range(0, 1) = 1.0;
+uniform float filter_minv: hint_range(0, 1) = 0.75;
+uniform float cut_inner_radius: hint_range(0, 1) = 0.1;
+
+uniform vec4 color : source_color = vec4(1,1,1,1);
+uniform sampler2D NOISE : source_color;
+uniform sampler2D NOISE2 : source_color;
+uniform vec2 NOISE_speed = vec2(0,0);
+uniform float NOISE_magnitude: hint_range(0, 1) = 0.0;
+
+void vertex() {}
+
+void fragment() {
+	
+	float ang = atan((UV.x-0.5)/(UV.y-0.5));
+
+	vec4 mixa = vec4(1,1,1,1);
+
+	vec2 pos = vec2(UV.x + NOISE_speed.x*TIME - floor(UV.x + NOISE_speed.x*TIME),UV.y + NOISE_speed.y*TIME - floor(UV.y + NOISE_speed.y*TIME));
+
+	mixa = smoothstep(0.0,1.0,texture(NOISE, pos).rgba);
+
+	COLOR.rgba = color*vec4(abs(sin(ang*shine_num*0.5 + TIME*rotation_speed)))*(1.0-NOISE_magnitude) + NOISE_magnitude*mixa;
+
+	COLOR.a = ((1.0 - filter_distence*0.5) - distance(UV, vec2(0.5,0.5))*filter_magnitude)*light_magnitude;
+
+	if ((distance(UV, vec2(0.5,0.5)) > 1.0/2.0) || (distance(UV, vec2(0.5,0.5)) < cut_inner_radius) || (COLOR.r < filter_minv) && (COLOR.g < filter_minv) && (COLOR.b < filter_minv)) {
+
+		COLOR.rgba = vec4(0.0);
+	}
+}
+"
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7km1e"]
 seamless = true
 seamless_blend_skirt = 0.275
 
 [resource]
-shader = ExtResource("1_7km1e")
+shader = SubResource("Shader_vc2so")
 shader_parameter/shine_num = 8.0
-shader_parameter/rotation_speed = 2.0
-shader_parameter/light_magnitude = 0.5
+shader_parameter/rotation_speed = 1.0
+shader_parameter/light_magnitude = 0.8
 shader_parameter/filter_distence = 1.0
 shader_parameter/filter_magnitude = 1.0
 shader_parameter/filter_minv = 0.341
 shader_parameter/cut_inner_radius = 0.0
-shader_parameter/color = Color(0.972549, 0.858824, 0.337255, 1)
+shader_parameter/color = Color(0.9, 0.7245, 0.198, 1)
 shader_parameter/NOISE = SubResource("NoiseTexture2D_7km1e")
 shader_parameter/NOISE_speed = Vector2(0, 0)
-shader_parameter/NOISE_magnitude = 0.0
+shader_parameter/NOISE_magnitude = 0.382
