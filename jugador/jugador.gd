@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var vida_player:int = 3
 @export var vida_escudo:int = 1
 var vida_actual
-@onready var player_murio:bool = false
+
 
 @onready var sprite_nave = $PlayerShip
 @onready var sprite_explosion = $AnimatedSprite2D
@@ -191,12 +191,12 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _check_muerte_player():
 	if Global.player_actual_life  == 0:
 		print("player murio")
-		player_murio = true
+		Global.player_murio = true
 		sprite_nave.hide() 
 		sprite_explosion.show()
 		sprite_explosion.play("muerte")
 		await sprite_explosion.animation_finished	# Esperar que termine la animación antes de destruir
 
 func _game_over():
-	if player_murio:
-		pass
+	if Global.player_murio:
+		get_tree().change_scene_to_file("res://Menu/game_over.tscn")
